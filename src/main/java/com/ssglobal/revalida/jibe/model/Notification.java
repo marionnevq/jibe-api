@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,8 +22,10 @@ public class Notification {
     @GeneratedValue
     private Integer id;
 
+    @Column(nullable = false)
     private Integer userID;
 
+    @Column(nullable = false)
     private String field;
 
 }
