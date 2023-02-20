@@ -7,8 +7,10 @@ import com.ssglobal.revalida.jibe.model.Role;
 import com.ssglobal.revalida.jibe.model.User;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;
+import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,17 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequest request) throws EntityExistsException, Exception {
+
+        if(userRepository.existsByUsername(request.getUsername())) {
+            throw new EntityExistsException("username already taken");
+        }
+
+        if(userRepository.existsByEmail(request.getEmail())) {
+            throw new EntityExistsException("email already taken");
+
+        }
+
         var user = User.builder()
                 .name(request.getName())
                 .username(request.getUsername())
@@ -43,7 +55,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) throws BadCredentialsException,Exception {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -52,7 +64,8 @@ public class AuthenticationService {
         );
         var user =  userRepository.findByEmail(request.getEmail())
                 .or(() -> { return(userRepository.findByUsername(request.getEmail()));})
-                .orElseThrow();
+                .orElseThrow(() -> {return new BadCredentialsException("Invalid Credentials");
+                });
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
