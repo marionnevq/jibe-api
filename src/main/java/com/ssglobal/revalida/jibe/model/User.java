@@ -32,7 +32,8 @@ public class User implements UserDetails
     private String password;
 
     private String imageUrl;
-
+    private Boolean firstTimeLogin;
+    
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -49,6 +50,10 @@ public class User implements UserDetails
     @Override
     public String getUsername() {
         return email;
+    }
+    
+    public boolean firstTimeLogin() {
+    	return true;
     }
 
     @Override

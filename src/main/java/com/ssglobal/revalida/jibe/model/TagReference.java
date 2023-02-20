@@ -1,6 +1,5 @@
 package com.ssglobal.revalida.jibe.model;
 
-
 import java.util.Set;
 
 import jakarta.persistence.Column;

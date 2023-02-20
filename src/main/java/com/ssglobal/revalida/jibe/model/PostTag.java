@@ -1,6 +1,5 @@
 package com.ssglobal.revalida.jibe.model;
 
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -26,7 +25,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "_postTags")
 public class PostTag {
-
 
     @Id
     @GeneratedValue
