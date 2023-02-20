@@ -24,13 +24,13 @@ public class User implements UserDetails
     @Id
     @GeneratedValue
     private Integer id;
-    private String firstname;
-    private String lastname;
     private String username;
-    private String email;
+    private String name;
     private String password;
-
+    private String email;
+    private String bio;
     private String imageUrl;
+    private Boolean firstTimeLogin;
 
     @Enumerated(EnumType.STRING)
     private Role role;
