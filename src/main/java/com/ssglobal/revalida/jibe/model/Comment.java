@@ -1,4 +1,4 @@
-package com.ssglobal.revalida.jibe.domain;
+package com.ssglobal.revalida.jibe.model;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -44,14 +44,14 @@ public class Comment {
 
 	@Column(nullable = false)
 	private LocalDate dateCommented;
-
-	@OneToMany(mappedBy = "likedComment")
-	private Set<Likes> likedCommentLikess;
-
-	@OneToMany(mappedBy = "postComments")
-	private Set<Post> postCommentsPosts;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_comment_id")
-	private User userComment;
+//
+//	@OneToMany(mappedBy = "likedComment")
+//	private Set<Likes> likedCommentLikess;
+//
+//	@OneToMany(mappedBy = "postComments")
+//	private Set<Post> postCommentsPosts;
+//
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "user_comment_id")
+//	private User userComment;
 }

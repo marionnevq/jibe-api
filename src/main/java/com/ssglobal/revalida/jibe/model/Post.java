@@ -1,4 +1,4 @@
-package com.ssglobal.revalida.jibe.domain;
+package com.ssglobal.revalida.jibe.model;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -32,24 +32,28 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
-    @Column(nullable = false)
-    private Integer userID;
+    @Column(nullable = true)
+    private String imageUrl;
 
     @Column(nullable = false)
     private LocalDate datePosted;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_comments_id", nullable = false)
-    private Comment postComments;
-    
-    @OneToMany(mappedBy = "postLikes")
-    private Set<Likes> postLikesLikes;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "postTags")
-    private Set<PostTag> postTagsPostTags;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "post_comments_id", nullable = false)
+//    private Comment postComments;
+//
+//    @OneToMany(mappedBy = "postLikes")
+//    private Set<Likes> postLikesLikes;
+//
+//    @OneToMany(mappedBy = "postTags")
+//    private Set<PostTag> postTagsPostTags;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_post_id")
+//    private User userPost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_post_id")
-    private User userPost;
-   
 }

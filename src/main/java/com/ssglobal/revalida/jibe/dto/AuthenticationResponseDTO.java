@@ -9,11 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
-    private String firstname;
-    private String lastname;
-    private String bio;
-    private String username;
-    private String email;
-    private String imageUrl;
+public class AuthenticationResponseDTO {
+    private String token;
 }

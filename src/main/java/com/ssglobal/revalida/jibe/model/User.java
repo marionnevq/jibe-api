@@ -1,20 +1,17 @@
-package com.ssglobal.revalida.jibe.domain;
+package com.ssglobal.revalida.jibe.model;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -55,7 +52,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 100)
     private String password;
 
-    @Column
+    @Column(nullable = false, length = 255)
     private String imageUrl;
 
     @Column(nullable = false)
@@ -63,43 +60,49 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-    
-    @OneToMany(mappedBy = "userPost")
-    private Set<Post> userPostPosts;
 
-    @OneToOne
-    @JoinColumn(name = "user_like_id")
-    private Likes userLike;
-
-    @OneToMany(mappedBy = "userComment")
-    private Set<Comment> userCommentComments;
-
-    @OneToOne
-    @JoinColumn(name = "user_follow_id")
-    private Follow userFollow;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
+//
+//    @OneToOne
+//    @JoinColumn(name = "user_like_id")
+//    private Likes userLike;
+//
+//    @OneToMany(mappedBy = "userComment")
+//    private Set<Comment> userCommentComments;
+//
+//    @OneToOne
+//    @JoinColumn(name = "user_follow_id")
+//    private Follow userFollow;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

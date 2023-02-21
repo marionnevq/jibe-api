@@ -1,4 +1,4 @@
-package com.ssglobal.revalida.jibe.model;
+package com.ssglobal.revalida.jibe.dto;
 
 import java.time.LocalDate;
 
@@ -8,21 +8,22 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PostDTO {
+public class CommentDTO {
 
-	private Integer postID;
+	private Integer commentID;
 
 	@NotNull
-	private String body;
+	private String value;
 
 	@NotNull
 	private Integer userID;
 
 	@NotNull
-	private LocalDate datePosted;
+	private Integer postID;
 
 	@NotNull
-	private Integer postComments;
+	private LocalDate dateCommented;
 
-	private Integer userPost;
+	private Integer userComment;
+
 }

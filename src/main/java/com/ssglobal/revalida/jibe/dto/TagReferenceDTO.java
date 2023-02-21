@@ -1,4 +1,4 @@
-package com.ssglobal.revalida.jibe.model;
+package com.ssglobal.revalida.jibe.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

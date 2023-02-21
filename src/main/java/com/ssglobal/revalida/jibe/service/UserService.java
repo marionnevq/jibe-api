@@ -1,7 +1,8 @@
 package com.ssglobal.revalida.jibe.service;
 
 
-import com.ssglobal.revalida.jibe.dto.UserResponse;
+
+import com.ssglobal.revalida.jibe.dto.UserResponseDTO;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    public UserResponse getCurrentUser(String email) {
+    public UserResponseDTO getCurrentUser(String email) {
         var user = userRepository.findByEmail(email);
 
         if (user.isEmpty()){
@@ -22,19 +23,20 @@ public class UserService {
         }
 
         var foundUser = user.get();
-            return UserResponse.builder()
-                    .firstname(foundUser.getFirstname())
-                    .lastname(foundUser.getLastname())
-                    .bio(foundUser.getBio())
-                    .imageUrl(foundUser.getImageUrl())
-                    .email(foundUser.getEmail())
-                    .username(foundUser.getUsername())
-                    .build();
+        return UserResponseDTO.builder()
+                .firstname(foundUser.getFirstname())
+                .lastname(foundUser.getLastname())
+                .bio(foundUser.getBio())
+                .imageUrl(foundUser.getImageUrl())
+                .email(foundUser.getEmail())
+                .username(foundUser.getUsername())
+                .build();
 
 
     }
 
-    public List<UserResponse> findUsersByUsername(String searchQuery) {
+    public List<UserResponseDTO> findUsersByUsername(String searchQuery) {
+
         var user = userRepository.findByUsernameLikeIgnoreCase(searchQuery);
 
         if (user.isEmpty()){
@@ -42,7 +44,7 @@ public class UserService {
         }
 
         return user.stream().map(u -> {
-            return UserResponse.builder()
+            return UserResponseDTO.builder()
                     .username(u.getUsername())
                     .email(u.getEmail())
                     .firstname(u.getFirstname())
@@ -53,7 +55,8 @@ public class UserService {
         }).toList();
     }
 
-    public UserResponse getUserByUsername(String username) {
+    public UserResponseDTO getUserByUsername(String username) {
+//        var user = userRepository.findByUsername(username);
         var user = userRepository.findByUsername(username);
 
         if (user.isEmpty()){
@@ -61,7 +64,7 @@ public class UserService {
         }
 
         var foundUser = user.get();
-        return UserResponse.builder()
+        return UserResponseDTO.builder()
                 .firstname(foundUser.getFirstname())
                 .lastname(foundUser.getLastname())
                 .bio(foundUser.getBio())

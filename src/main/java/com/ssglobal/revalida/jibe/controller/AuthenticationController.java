@@ -1,8 +1,8 @@
 package com.ssglobal.revalida.jibe.controller;
 
-import com.ssglobal.revalida.jibe.dto.AuthenticationRequest;
-import com.ssglobal.revalida.jibe.dto.AuthenticationResponse;
-import com.ssglobal.revalida.jibe.dto.RegisterRequest;
+import com.ssglobal.revalida.jibe.dto.AuthenticationRequestDTO;
+
+import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
 import com.ssglobal.revalida.jibe.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<Object> register(@RequestBody RegisterRequestDTO request) {
         String error = "";
         try {
             return ResponseEntity.ok(authenticationService.register(request));
@@ -31,14 +31,16 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<Object> authenticate(@RequestBody AuthenticationRequest request) {
+    public ResponseEntity<Object> authenticate(@RequestBody AuthenticationRequestDTO request) {
         String error = "";
+//        return ResponseEntity.ok().body(request);
         try {
             return ResponseEntity.ok(authenticationService.authenticate(request));
         } catch (Exception e) {
             if (e instanceof BadCredentialsException) {
                 error = "Invalid Credentials";
             }
+            error = e.getMessage();
         }
 
         return ResponseEntity.status(401).body(error);
