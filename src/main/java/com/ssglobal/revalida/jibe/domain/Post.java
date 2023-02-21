@@ -1,4 +1,4 @@
-package com.ssglobal.revalida.jibe.model;
+package com.ssglobal.revalida.jibe.domain;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -22,32 +22,34 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_comment")
-public class Comment {
+@Table(name = "_post")
+public class Post {
 
     @Id
     @GeneratedValue
-    private Integer commentID;
-    
+    private Integer postID;
+
     @Column(nullable = false)
-    private String value;
-    
+    private String body;
+
     @Column(nullable = false)
     private Integer userID;
-    
-    @Column(nullable = false)
-    private Integer postID;
-    
-    @Column(nullable = false)
-    private LocalDate dateCommented;
-    
-    @OneToMany(mappedBy = "likedComment")
-    private Set<Likes> likedCommentLikess;
 
-    @OneToMany(mappedBy = "postComments")
-    private Set<Post> postCommentsPosts;
-    
+    @Column(nullable = false)
+    private LocalDate datePosted;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_comment_id")
-    private User userComment;
+    @JoinColumn(name = "post_comments_id", nullable = false)
+    private Comment postComments;
+    
+    @OneToMany(mappedBy = "postLikes")
+    private Set<Likes> postLikesLikes;
+
+    @OneToMany(mappedBy = "postTags")
+    private Set<PostTag> postTagsPostTags;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_post_id")
+    private User userPost;
+   
 }

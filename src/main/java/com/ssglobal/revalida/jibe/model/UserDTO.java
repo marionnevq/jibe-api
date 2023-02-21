@@ -1,38 +1,53 @@
 package com.ssglobal.revalida.jibe.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "_user")
-public class User implements UserDetails
-{
+@Getter
+@Setter
+public class UserDTO implements UserDetails{
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue
     private Integer id;
+	
+    @NotNull
+    @Size(max = 100)
     private String firstname;
+    
+    @NotNull
+    @Size(max = 100)
     private String lastname;
+    
+    @NotNull
+    @Size(max = 100)
     private String username;
+    
+    @NotNull
+    @Size(max = 100)
     private String email;
+    
+    @NotNull
+    @Size(max = 100)
     private String password;
 
+    @Size(max = 255)
     private String imageUrl;
-    private Boolean firstTimeLogin;
     
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -76,17 +91,10 @@ public class User implements UserDetails
         return true;
     }
     
-    @OneToMany(mappedBy = "userPost")
-    private Set<Post> userPostPosts;
+    @NotNull
+    private Boolean firstTimeLogin;
 
-    @OneToOne
-    @JoinColumn(name = "user_like_id")
-    private Likes userLike;
+    private Integer userLike;
 
-    @OneToMany(mappedBy = "userComment")
-    private Set<Comment> userCommentComments;
-
-    @OneToOne
-    @JoinColumn(name = "user_follow_id")
-    private Follow userFollow;
+    private Integer userFollow;
 }
