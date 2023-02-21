@@ -23,7 +23,8 @@ public class UserService {
 
         var foundUser = user.get();
             return UserResponse.builder()
-                    .name(foundUser.getName())
+                    .firstname(foundUser.getFirstname())
+                    .lastname(foundUser.getLastname())
                     .bio(foundUser.getBio())
                     .imageUrl(foundUser.getImageUrl())
                     .email(foundUser.getEmail())
@@ -44,7 +45,8 @@ public class UserService {
             return UserResponse.builder()
                     .username(u.getUsername())
                     .email(u.getEmail())
-                    .name(u.getName())
+                    .firstname(u.getFirstname())
+                    .lastname(u.getLastname())
                     .bio(u.getBio())
                     .imageUrl(u.getImageUrl())
                     .build();
@@ -60,7 +62,8 @@ public class UserService {
 
         var foundUser = user.get();
         return UserResponse.builder()
-                .name(foundUser.getName())
+                .firstname(foundUser.getFirstname())
+                .lastname(foundUser.getLastname())
                 .bio(foundUser.getBio())
                 .imageUrl(foundUser.getImageUrl())
                 .email(foundUser.getEmail())

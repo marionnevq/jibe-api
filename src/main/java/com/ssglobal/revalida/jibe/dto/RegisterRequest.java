@@ -7,7 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
-    private String name;
+    private String firstname;
+    private String lastname;
     private String bio;
     private String username;
     private String email;
