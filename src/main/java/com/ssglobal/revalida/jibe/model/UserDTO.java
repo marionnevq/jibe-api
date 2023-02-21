@@ -43,6 +43,10 @@ public class UserDTO implements UserDetails{
     private String email;
     
     @NotNull
+    @Size(max = 255)
+    private String bio;
+    
+    @NotNull
     @Size(max = 100)
     private String password;
 

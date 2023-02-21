@@ -50,6 +50,10 @@ public class User {
 
     @Column(nullable = false, length = 100)
     private String email;
+    
+    @Column(nullable = false, length = 255)
+    private String bio;
+
 
     @Column(nullable = false, length = 100)
     private String password;
