@@ -1,35 +1,59 @@
 package com.ssglobal.revalida.jibe.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "_user")
-public class User implements UserDetails
-{
+@Getter
+@Setter
+public class UserDTO implements UserDetails{
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue
     private Integer id;
+
+    @NotNull
+    @Size(max = 100)
+    private String firstname;
+    
+    @NotNull
+    @Size(max = 100)
+    private String lastname;
+    
+    @NotNull
+    @Size(max = 100)
     private String username;
-    private String name;
-    private String password;
+    
+    @NotNull
+    @Size(max = 100)
     private String email;
+    
+    @NotNull
+    @Size(max = 255)
     private String bio;
+    
+    @NotNull
+    @Size(max = 100)
+    private String password;
+
+    @Size(max = 255)
     private String imageUrl;
+    
+    @NotNull
     private Boolean firstTimeLogin;
 
     @Enumerated(EnumType.STRING)
@@ -44,6 +68,8 @@ public class User implements UserDetails
     public String getPassword() {
         return password;
     }
+
+  
 
     @Override
     public boolean isAccountNonExpired() {
@@ -64,4 +90,11 @@ public class User implements UserDetails
     public boolean isEnabled() {
         return true;
     }
+    
+    @NotNull
+    private Boolean firstTimeLogin;
+
+    private Integer userLike;
+
+    private Integer userFollow;
 }
