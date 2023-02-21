@@ -36,14 +36,25 @@ public class Comment {
 	@Column(nullable = false)
 	private String value;
 
-	@Column(nullable = false)
-	private Integer userID;
-
-	@Column(nullable = false)
-	private Integer postID;
+//	@Column(nullable = false)
+//	private Integer userID;
+//
+//	@Column(nullable = false)
+//	private Integer postID;
 
 	@Column(nullable = false)
 	private LocalDate dateCommented;
+
+	private String media;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "post_post_id")
+	private Post post;
+
 //
 //	@OneToMany(mappedBy = "likedComment")
 //	private Set<Likes> likedCommentLikess;

@@ -64,7 +64,10 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Post> posts;
-//
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Comment> comments;
 //    @OneToOne
 //    @JoinColumn(name = "user_like_id")
 //    private Likes userLike;

@@ -5,6 +5,7 @@ import com.ssglobal.revalida.jibe.model.Post;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
 
+    private final ModelMapper modelMapper;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
@@ -36,27 +38,29 @@ public class PostService {
 
         var saved = postRepository.save(post);
 
-        return PostDTO.builder()
-                .postID(saved.getPostID())
-                .body(saved.getBody())
-                .datePosted(saved.getDatePosted())
-                .userID(saved.getUser().getId())
-                .username(saved.getUser().getUsername())
-                .imageUrl(saved.getImageUrl())
-                .build();
+        return modelMapper.map(saved, PostDTO.class);
+//        return PostDTO.builder()
+//                .postID(saved.getPostID())
+//                .body(saved.getBody())
+//                .datePosted(saved.getDatePosted())
+//                .userID(saved.getUser().getId())
+//                .username(saved.getUser().getUsername())
+//                .imageUrl(saved.getImageUrl())
+//                .build();
     }
 
     public List<PostDTO> getAllPosts() {
 
         var posts = postRepository.findByPostIDNotNullOrderByDatePostedDesc().stream().map(post -> {
-            return PostDTO.builder()
-                    .postID(post.getPostID())
-                    .body(post.getBody())
-                    .datePosted(post.getDatePosted())
-                    .userID(post.getUser().getId())
-                    .username(post.getUser().getUsername())
-                    .imageUrl(post.getImageUrl())
-                    .build();
+            return modelMapper.map(post, PostDTO.class);
+//            return PostDTO.builder()
+//                    .postID(post.getPostID())
+//                    .body(post.getBody())
+//                    .datePosted(post.getDatePosted())
+//                    .userID(post.getUser().getId())
+//                    .username(post.getUser().getUsername())
+//                    .imageUrl(post.getImageUrl())
+//                    .build();
         }).toList();
 
 
@@ -66,14 +70,15 @@ public class PostService {
     public PostDTO getPostById(Integer id) {
         var post = postRepository.findById(id);
 
-        return PostDTO.builder()
-                .postID(post.get().getPostID())
-                .body(post.get().getBody())
-                .datePosted(post.get().getDatePosted())
-                .userID(post.get().getUser().getId())
-                .username(post.get().getUser().getUsername())
-                .imageUrl(post.get().getImageUrl())
-                .build();
+        return modelMapper.map(post, PostDTO.class);
+//        return PostDTO.builder()
+//                .postID(post.get().getPostID())
+//                .body(post.get().getBody())
+//                .datePosted(post.get().getDatePosted())
+//                .userID(post.get().getUser().getId())
+//                .username(post.get().getUser().getUsername())
+//                .imageUrl(post.get().getImageUrl())
+//                .build();
     }
 
     public PostDTO deletePostById(Integer id) {
@@ -83,28 +88,30 @@ public class PostService {
             throw new RuntimeException("post not found");
         } else {
             postRepository.deleteById(id);
-            return PostDTO.builder()
-                    .postID(post.get().getPostID())
-                    .body(post.get().getBody())
-                    .datePosted(post.get().getDatePosted())
-                    .userID(post.get().getUser().getId())
-                    .username(post.get().getUser().getUsername())
-                    .imageUrl(post.get().getImageUrl())
-                    .build();
+            return modelMapper.map(post.get(), PostDTO.class);
+//            return PostDTO.builder()
+//                    .postID(post.get().getPostID())
+//                    .body(post.get().getBody())
+//                    .datePosted(post.get().getDatePosted())
+//                    .userID(post.get().getUser().getId())
+//                    .username(post.get().getUser().getUsername())
+//                    .imageUrl(post.get().getImageUrl())
+//                    .build();
         }
 
     }
 
     public List<PostDTO> getPostsByUser(String username) {
         var posts = postRepository.findByUser_UsernameOrderByDatePostedDesc(username).stream().map(post -> {
-            return PostDTO.builder()
-                    .postID(post.getPostID())
-                    .body(post.getBody())
-                    .datePosted(post.getDatePosted())
-                    .userID(post.getUser().getId())
-                    .username(post.getUser().getUsername())
-                    .imageUrl(post.getImageUrl())
-                    .build();
+            return modelMapper.map(post, PostDTO.class);
+//            return PostDTO.builder()
+//                    .postID(post.getPostID())
+//                    .body(post.getBody())
+//                    .datePosted(post.getDatePosted())
+//                    .userID(post.getUser().getId())
+//                    .username(post.getUser().getUsername())
+//                    .imageUrl(post.getImageUrl())
+//                    .build();
         }).toList();
 
 

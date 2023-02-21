@@ -3,13 +3,12 @@ package com.ssglobal.revalida.jibe.dto;
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostDTO {
 
 	private Integer postID;
@@ -21,7 +20,7 @@ public class PostDTO {
 	private Integer userID;
 
 	@NotNull
-	private String username;
+	private String userUsername;
 
 	@NotNull
 	private LocalDate datePosted;
