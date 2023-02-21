@@ -3,8 +3,8 @@ package com.ssglobal.revalida.jibe.service;
 import com.ssglobal.revalida.jibe.dto.AuthenticationRequest;
 import com.ssglobal.revalida.jibe.dto.AuthenticationResponse;
 import com.ssglobal.revalida.jibe.dto.RegisterRequest;
-import com.ssglobal.revalida.jibe.model.Role;
-import com.ssglobal.revalida.jibe.model.User;
+import com.ssglobal.revalida.jibe.domain.Role;
+import com.ssglobal.revalida.jibe.domain.User;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;
 import jakarta.persistence.EntityExistsException;
@@ -37,8 +37,10 @@ public class AuthenticationService {
 
         }
 
+
         var user = User.builder()
-                .name(request.getName())
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .bio(request.getBio())

@@ -1,6 +1,6 @@
 package com.ssglobal.revalida.jibe.demo;
 
-import com.ssglobal.revalida.jibe.model.User;
+import com.ssglobal.revalida.jibe.domain.User;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;

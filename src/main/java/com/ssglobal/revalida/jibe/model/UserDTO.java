@@ -3,6 +3,7 @@ package com.ssglobal.revalida.jibe.model;
 import java.util.Collection;
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.domain.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -90,9 +91,7 @@ public class UserDTO implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
-    
-    @NotNull
-    private Boolean firstTimeLogin;
+
 
     private Integer userLike;
 
