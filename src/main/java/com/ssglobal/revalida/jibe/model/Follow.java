@@ -1,18 +1,12 @@
 package com.ssglobal.revalida.jibe.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Builder
@@ -28,12 +22,21 @@ public class Follow {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
 	private Integer followID;
 
-	@Column(nullable = false)
-	private Integer followerID;
+//	@Column(nullable = false)
+//	private Integer followerID;
+//
+//	@Column(nullable = false)
+//	private Integer followeeID;
 
-	@Column(nullable = false)
-	private Integer followeeID;
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "follower_id")
+	private User follower;
 
-//	@OneToOne(mappedBy = "userFollow", fetch = FetchType.LAZY)
-//	private User userFollow;
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "followee_id")
+	private User followee;
+
+
 }

@@ -18,6 +18,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Builder
@@ -36,33 +38,20 @@ public class Comment {
 	@Column(nullable = false)
 	private String value;
 
-//	@Column(nullable = false)
-//	private Integer userID;
-//
-//	@Column(nullable = false)
-//	private Integer postID;
-
 	@Column(nullable = false)
 	private LocalDate dateCommented;
 
 	private String media;
 
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "user_id")
 	private User user;
 
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "post_post_id")
 	private Post post;
 
-//
-//	@OneToMany(mappedBy = "likedComment")
-//	private Set<Likes> likedCommentLikess;
-//
-//	@OneToMany(mappedBy = "postComments")
-//	private Set<Post> postCommentsPosts;
-//
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "user_comment_id")
-//	private User userComment;
+
 }

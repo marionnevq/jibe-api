@@ -17,6 +17,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Builder
@@ -40,26 +42,17 @@ public class Post {
     private LocalDate datePosted;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
     private User user;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = jakarta.persistence.CascadeType.REMOVE)
     private Set<Comment> comments;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "post", cascade = jakarta.persistence.CascadeType.REMOVE, orphanRemoval = true)
+    private Set<PostTag> postTags;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "post_comments_id", nullable = false)
-//    private Comment postComments;
-//
-//    @OneToMany(mappedBy = "postLikes")
-//    private Set<Likes> postLikesLikes;
-//
-//    @OneToMany(mappedBy = "postTags")
-//    private Set<PostTag> postTagsPostTags;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_post_id")
-//    private User userPost;
 
 }

@@ -13,21 +13,18 @@ public class PostDTO {
 
 	private Integer postID;
 
-	@NotNull
+
 	private String body;
 
-	@NotNull
+
 	private Integer userID;
 
-	@NotNull
+
 	private String userUsername;
 
-	@NotNull
+
 	private LocalDate datePosted;
 
 	private String imageUrl;
-//	@NotNull
-//	private Integer postComments;
-//
-//	private Integer userPost;
+
 }

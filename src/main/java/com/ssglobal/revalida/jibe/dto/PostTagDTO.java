@@ -3,20 +3,17 @@ package com.ssglobal.revalida.jibe.dto;
 import java.util.List;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostTagDTO {
 
-	private Integer postID;
+	private Integer postPostID;
 
-	@NotNull
-	private Integer tagID;
 
-	private Integer postTags;
-
-	private List<Integer> postRefs;
+	private String tagValue;
 
 }

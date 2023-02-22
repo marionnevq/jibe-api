@@ -17,12 +17,12 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/posts/{id}/comments")
-    public ResponseEntity<CommentDTO> addPost(@RequestBody CommentDTO request, @PathVariable Integer id) {
+    public ResponseEntity<CommentDTO> addComment(@RequestBody CommentDTO request, @PathVariable Integer id) {
         return ResponseEntity.ok().body(commentService.createComment(request,id));
     }
 
     @GetMapping("/posts/{id}/comments")
-    public ResponseEntity<List<CommentDTO>> addPost(@PathVariable Integer id) {
+    public ResponseEntity<List<CommentDTO>> selectComments(@PathVariable Integer id) {
         return ResponseEntity.ok().body(commentService.getComments(id));
     }
 

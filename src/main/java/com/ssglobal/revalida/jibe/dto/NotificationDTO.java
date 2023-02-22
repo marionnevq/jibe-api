@@ -11,11 +11,10 @@ public class NotificationDTO {
 
 	private Integer id;
 
-    @NotNull
+
     private Integer userID;
 
-    @NotNull
-    @Size(max = 255)
+
     private String field;
 
 }

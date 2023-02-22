@@ -33,4 +33,6 @@ public class PostController {
     public ResponseEntity<PostDTO> removePostById(@PathVariable Integer id) {
         return ResponseEntity.ok().body(postService.deletePostById(id));
     }
+
+
 }

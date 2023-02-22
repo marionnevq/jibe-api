@@ -62,22 +62,20 @@ public class User implements UserDetails {
     private Role role;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Post> posts;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Comment> comments;
-//    @OneToOne
-//    @JoinColumn(name = "user_like_id")
-//    private Likes userLike;
-//
-//    @OneToMany(mappedBy = "userComment")
-//    private Set<Comment> userCommentComments;
-//
-//    @OneToOne
-//    @JoinColumn(name = "user_follow_id")
-//    private Follow userFollow;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "follower", cascade = CascadeType.REMOVE)
+    private Set<Follow> follows;
+    @JsonIgnore
+    @OneToMany(mappedBy = "followee", cascade = CascadeType.REMOVE)
+    private Set<Follow> followedBys;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

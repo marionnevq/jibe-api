@@ -10,17 +10,17 @@ public class LikesDTO {
 	
 	private Integer reactionID;
 
-    @NotNull
+
     private Integer userID;
 
-    @NotNull
+
     private Integer commentID;
 
-    @NotNull
+
     private Integer postID;
 
     private Integer likedComment;
 
-    @NotNull
+
     private Integer postLikes;
 }

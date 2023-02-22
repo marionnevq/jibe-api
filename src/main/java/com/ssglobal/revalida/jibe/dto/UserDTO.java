@@ -24,38 +24,30 @@ public class UserDTO {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-    @GeneratedValue
+
     private Integer id;
 
-    @NotNull
-    @Size(max = 100)
+
     private String firstname;
     
-    @NotNull
-    @Size(max = 100)
+
     private String lastname;
     
-    @NotNull
-    @Size(max = 100)
+
     private String username;
     
-    @NotNull
-    @Size(max = 100)
+
     private String email;
     
-    @NotNull
-    @Size(max = 255)
+
     private String bio;
     
-    @NotNull
-    @Size(max = 100)
+
     private String password;
 
-    @Size(max = 255)
+
     private String imageUrl;
-    
-    @NotNull
+
     private Boolean firstTimeLogin;
 
     @Enumerated(EnumType.STRING)

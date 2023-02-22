@@ -38,15 +38,5 @@ public class Likes {
 
 	@Column(nullable = false)
 	private Integer postID;
-//
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "liked_comment_id")
-//	private Comment likedComment;
-//
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "post_likes_id", nullable = false)
-//	private Post postLikes;
-//
-//    @OneToOne(mappedBy = "userLike", fetch = FetchType.LAZY)
-//    private User userLike;
+
 }

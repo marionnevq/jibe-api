@@ -2,14 +2,8 @@ package com.ssglobal.revalida.jibe.model;
 
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,8 +16,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Getter
-@Setter
 @Table(name = "_tagReference")
 public class TagReference {
 
@@ -36,10 +28,8 @@ public class TagReference {
 	@Column(nullable = false)
 	private String tagValue;
 
-	@Column(nullable = false)
-	private String field;
-
-//	@ManyToMany(mappedBy = "postRefTagReferences")
-//	private Set<PostTag> postRefPostTags;
+	@JsonIgnore
+	@OneToMany(mappedBy = "tagReference")
+	private Set<PostTag> postTags;
 
 }
