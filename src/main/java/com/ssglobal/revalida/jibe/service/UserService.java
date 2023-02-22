@@ -18,7 +18,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     public UserResponseDTO getCurrentUser(String email) {
-        var user = userRepository.findByEmail(email);
+        var user = userRepository.findByEmail(email)
+                .or(() -> {return userRepository.findByUsername(email);});
 
         if (user.isEmpty()){
             throw new RuntimeException("user not found");

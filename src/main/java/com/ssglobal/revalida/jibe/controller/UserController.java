@@ -2,6 +2,8 @@ package com.ssglobal.revalida.jibe.controller;
 
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.dto.UserResponseDTO;
+import com.ssglobal.revalida.jibe.repository.UserRepository;
+import com.ssglobal.revalida.jibe.security.JwtService;
 import com.ssglobal.revalida.jibe.service.PostService;
 import com.ssglobal.revalida.jibe.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +20,14 @@ public class UserController {
     private final UserService userService;
     private final PostService postService;
 
+    private final JwtService jwtService;
+
+
     @GetMapping("/users/me")
-    public ResponseEntity<UserResponseDTO> selectCurrentUser(@RequestBody String email) {
-        return ResponseEntity.ok(userService.getCurrentUser(email));
+    public ResponseEntity<UserResponseDTO> selectCurrentUser(@RequestHeader(name = "Authorization") String token) {
+        final String jwt = token.substring(7);
+        final String userEmail = jwtService.extractUsername(jwt);
+        return ResponseEntity.ok().body(userService.getCurrentUser(userEmail));
     }
 
 
