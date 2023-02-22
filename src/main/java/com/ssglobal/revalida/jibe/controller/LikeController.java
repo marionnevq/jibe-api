@@ -39,7 +39,7 @@ public class LikeController {
         return ResponseEntity.ok().body(likesService.getPostLikes(postID));
     }
 	
-	@DeleteMapping("/likes/{reactionID}")
+	@DeleteMapping("/likes/unlike/{reactionID}")
 	public ResponseEntity<Void> deleteLike(@PathVariable final Integer reactionID){
 		likesService.deleteLike(reactionID);
 		return ResponseEntity.noContent().build();
