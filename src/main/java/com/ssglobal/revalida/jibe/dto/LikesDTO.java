@@ -1,6 +1,5 @@
 package com.ssglobal.revalida.jibe.dto;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +18,7 @@ public class LikesDTO {
 
     private Integer postID;
 
+    
     private Integer likedComment;
 
 

@@ -72,6 +72,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "follower", cascade = CascadeType.REMOVE)
     private Set<Follow> follows;
+    
     @JsonIgnore
     @OneToMany(mappedBy = "followee", cascade = CascadeType.REMOVE)
     private Set<Follow> followedBys;
