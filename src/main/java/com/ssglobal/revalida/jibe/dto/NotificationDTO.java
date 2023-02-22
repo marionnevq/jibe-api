@@ -1,4 +1,4 @@
-package com.ssglobal.revalida.jibe.model;
+package com.ssglobal.revalida.jibe.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,11 +11,10 @@ public class NotificationDTO {
 
 	private Integer id;
 
-    @NotNull
+
     private Integer userID;
 
-    @NotNull
-    @Size(max = 255)
+
     private String field;
 
 }

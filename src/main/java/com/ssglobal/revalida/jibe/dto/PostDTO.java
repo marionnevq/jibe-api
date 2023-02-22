@@ -1,28 +1,30 @@
-package com.ssglobal.revalida.jibe.model;
+package com.ssglobal.revalida.jibe.dto;
 
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostDTO {
 
 	private Integer postID;
 
-	@NotNull
+
 	private String body;
 
-	@NotNull
+
 	private Integer userID;
 
-	@NotNull
+
+	private String userUsername;
+
+
 	private LocalDate datePosted;
 
-	@NotNull
-	private Integer postComments;
+	private String imageUrl;
 
-	private Integer userPost;
 }

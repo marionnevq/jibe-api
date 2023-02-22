@@ -1,8 +1,9 @@
-package com.ssglobal.revalida.jibe.domain;
+package com.ssglobal.revalida.jibe.model;
 
 import java.time.LocalDate;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,6 +17,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Builder
@@ -32,24 +35,24 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
-    @Column(nullable = false)
-    private Integer userID;
+    @Column(nullable = true)
+    private String imageUrl;
 
     @Column(nullable = false)
     private LocalDate datePosted;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_comments_id", nullable = false)
-    private Comment postComments;
-    
-    @OneToMany(mappedBy = "postLikes")
-    private Set<Likes> postLikesLikes;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "postTags")
-    private Set<PostTag> postTagsPostTags;
+    @JsonIgnore
+    @OneToMany(mappedBy = "post", cascade = jakarta.persistence.CascadeType.REMOVE)
+    private Set<Comment> comments;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_post_id")
-    private User userPost;
-   
+    @JsonIgnore
+    @OneToMany(mappedBy = "post", cascade = jakarta.persistence.CascadeType.REMOVE, orphanRemoval = true)
+    private Set<PostTag> postTags;
+
+
 }

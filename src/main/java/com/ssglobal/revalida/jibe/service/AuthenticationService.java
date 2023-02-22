@@ -1,10 +1,13 @@
 package com.ssglobal.revalida.jibe.service;
 
-import com.ssglobal.revalida.jibe.dto.AuthenticationRequest;
-import com.ssglobal.revalida.jibe.dto.AuthenticationResponse;
-import com.ssglobal.revalida.jibe.dto.RegisterRequest;
-import com.ssglobal.revalida.jibe.domain.Role;
-import com.ssglobal.revalida.jibe.domain.User;
+
+import com.ssglobal.revalida.jibe.dto.AuthenticationRequestDTO;
+
+import com.ssglobal.revalida.jibe.dto.AuthenticationResponseDTO;
+
+import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
+import com.ssglobal.revalida.jibe.model.Role;
+import com.ssglobal.revalida.jibe.model.User;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;
 import jakarta.persistence.EntityExistsException;
@@ -26,7 +29,7 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) throws EntityExistsException, Exception {
+    public AuthenticationResponseDTO register(RegisterRequestDTO request) throws EntityExistsException, Exception {
 
         if(userRepository.existsByUsername(request.getUsername())) {
             throw new EntityExistsException("username already taken");
@@ -34,9 +37,7 @@ public class AuthenticationService {
 
         if(userRepository.existsByEmail(request.getEmail())) {
             throw new EntityExistsException("email already taken");
-
         }
-
 
         var user = User.builder()
                 .firstname(request.getFirstname())
@@ -52,12 +53,14 @@ public class AuthenticationService {
 
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
+        return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) throws BadCredentialsException,Exception {
+    public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO request) throws BadCredentialsException,Exception {
+        System.out.println(request.getEmail());
+        System.out.println(request.getPassword());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -69,7 +72,7 @@ public class AuthenticationService {
                 .orElseThrow(() -> {return new BadCredentialsException("Invalid Credentials");
                 });
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
+        return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
     }

@@ -3,6 +3,7 @@ package com.ssglobal.revalida.jibe.config;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,6 +32,12 @@ public class ApplicationConfig {
                     .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         };
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper mapper = new ModelMapper();
+        return mapper;
     }
 
     @Bean

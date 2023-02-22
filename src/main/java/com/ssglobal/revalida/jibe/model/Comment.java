@@ -1,45 +1,57 @@
-package com.ssglobal.revalida.jibe.domain;
+package com.ssglobal.revalida.jibe.model;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Getter
-@Setter
-@Table(name = "_tagReference")
-public class TagReference {
+@Table(name = "_comment")
+public class Comment {
 
 	@Id
 	@Column(nullable = false, updatable = false)
 	@SequenceGenerator(name = "primary_sequence", sequenceName = "primary_sequence", allocationSize = 1, initialValue = 10000)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
-	private Integer tagID;
+	private Integer commentID;
 
 	@Column(nullable = false)
-	private String tagValue;
+	private String value;
 
 	@Column(nullable = false)
-	private String field;
+	private LocalDate dateCommented;
 
-	@ManyToMany(mappedBy = "postRefTagReferences")
-	private Set<PostTag> postRefPostTags;
+	private String media;
+
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "post_post_id")
+	private Post post;
+
 
 }
