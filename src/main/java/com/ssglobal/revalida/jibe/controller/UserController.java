@@ -28,7 +28,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/profiles/{username}")
+    @GetMapping("/profiles/{username}/posts")
     public ResponseEntity<UserResponse> selectUserByUsername(@PathVariable String username) {
         return ResponseEntity.ok(userService.getUserByUsername(username));
 

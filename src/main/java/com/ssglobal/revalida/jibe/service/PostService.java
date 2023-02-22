@@ -43,11 +43,8 @@ public class PostService {
 				.collect(Collectors.toList());
 	}
 
-	public boolean createPost(final PostDTO postDTO, final String body, final String imageUrl) {
+	public boolean createPost(final PostDTO postDTO) {
 		final Post post = new Post();
-		if (body != null) {
-			throw new RuntimeException("Post is empty.");
-		}
 		mapToEntity(postDTO, post);
 		boolean isSuccess = postRepository.save(post) != null;
 		return isSuccess;
@@ -74,7 +71,6 @@ public class PostService {
 	private Post mapToEntity(final PostDTO postDTO, final Post post) {
 		post.setBody(postDTO.getBody());
 		post.setImageUrl(postDTO.getImageUrl());
-		post.setDatePosted(postDTO.getDatePosted());
 		return post;
 	}
 	

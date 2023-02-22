@@ -18,10 +18,8 @@ public class CommentDTO {
 	@NotNull
 	private Integer userID;
 
-	@NotNull
 	private Integer postID;
 
-	@NotNull
 	private LocalDate dateCommented;
 	
 	private String media;

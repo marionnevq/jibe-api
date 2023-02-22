@@ -3,6 +3,8 @@ package com.ssglobal.revalida.jibe.domain;
 import java.time.LocalDate;
 import java.util.Set;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,12 +34,13 @@ public class Post {
     @Column(nullable = false)
     private String body;
     
-    @Column(nullable = true)
+    @Column
     private String imageUrl;
 
-    @Column(nullable = false)
+    @Column
     private Integer userID;
 
+    @CreationTimestamp
     @Column(nullable = false)
     private LocalDate datePosted;
 

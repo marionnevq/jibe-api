@@ -3,6 +3,8 @@ package com.ssglobal.revalida.jibe.domain;
 import java.time.LocalDate;
 import java.util.Set;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,9 +30,7 @@ import lombok.NoArgsConstructor;
 public class Comment {
 
 	@Id
-	@Column(nullable = false, updatable = false)
-	@SequenceGenerator(name = "primary_sequence", sequenceName = "primary_sequence", allocationSize = 1, initialValue = 10000)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
+	@GeneratedValue
 	private Integer commentID;
 
 	@Column(nullable = false)
@@ -39,12 +39,13 @@ public class Comment {
 	@Column(nullable = false)
 	private Integer userID;
 
-	@Column(nullable = false)
+	@Column
 	private Integer postID;
 
+	@CreationTimestamp
 	@Column(nullable = false)
 	private LocalDate dateCommented;
-	
+
 	@Column
 	private String media;
 

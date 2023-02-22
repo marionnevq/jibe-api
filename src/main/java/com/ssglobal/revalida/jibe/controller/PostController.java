@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,16 +35,14 @@ public class PostController {
 		return ResponseEntity.ok(postService.getAll());
 	}
 	
-	@GetMapping("/profiles/{username}/posts")
+	@GetMapping("/profiles/posts/{username}")
 	public ResponseEntity<List<PostDTO>> getPostByUsername(@PathVariable final String username){
 		return ResponseEntity.ok(postService.getPostsByUsername(username));
 	}
 
-	@PostMapping
-	public ResponseEntity<Boolean> create(@RequestPart("post") @Valid final PostDTO post,
-			@RequestPart("body") String body,
-			@RequestPart("imageUrl") String imageUrl) {
-		return new ResponseEntity<>(postService.createPost(post, body, imageUrl), HttpStatus.CREATED);
+	@PostMapping("/posts/add")
+	public ResponseEntity<Boolean> create(@RequestBody @Valid final PostDTO post) {
+		return new ResponseEntity<>(postService.createPost(post), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/posts/{postID}")

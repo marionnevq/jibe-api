@@ -17,13 +17,10 @@ public class PostDTO {
 
 	private String imageUrl;
 	
-	@NotNull
 	private Integer userID;
 
-	@NotNull
 	private LocalDate datePosted;
 
-	@NotNull
 	private Integer postComments;
 
 	private Integer userPost;
