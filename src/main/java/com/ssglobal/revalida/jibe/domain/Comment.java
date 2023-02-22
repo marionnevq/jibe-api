@@ -44,6 +44,9 @@ public class Comment {
 
 	@Column(nullable = false)
 	private LocalDate dateCommented;
+	
+	@Column
+	private String media;
 
 	@OneToMany(mappedBy = "likedComment")
 	private Set<Likes> likedCommentLikess;

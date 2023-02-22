@@ -15,6 +15,8 @@ public class PostDTO {
 	@NotNull
 	private String body;
 
+	private String imageUrl;
+	
 	@NotNull
 	private Integer userID;
 

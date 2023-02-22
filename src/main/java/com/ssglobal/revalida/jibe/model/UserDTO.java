@@ -70,8 +70,6 @@ public class UserDTO implements UserDetails{
         return password;
     }
 
-  
-
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -91,7 +89,6 @@ public class UserDTO implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
-
 
     private Integer userLike;
 

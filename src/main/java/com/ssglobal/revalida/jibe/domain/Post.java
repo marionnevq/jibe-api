@@ -31,6 +31,9 @@ public class Post {
 
     @Column(nullable = false)
     private String body;
+    
+    @Column(nullable = true)
+    private String imageUrl;
 
     @Column(nullable = false)
     private Integer userID;
@@ -39,7 +42,7 @@ public class Post {
     private LocalDate datePosted;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_comments_id", nullable = false)
+    @JoinColumn(name = "post_comments_id")
     private Comment postComments;
     
     @OneToMany(mappedBy = "postLikes")

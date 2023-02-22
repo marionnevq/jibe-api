@@ -23,6 +23,8 @@ public class CommentDTO {
 
 	@NotNull
 	private LocalDate dateCommented;
+	
+	private String media;
 
 	private Integer userComment;
 
