@@ -33,9 +33,7 @@ public class LikesService {
 		} else if (request.getPostID() == null) {
 			commentID = request.getCommentID();
 		} else {
-//			throw new RuntimeException("Not Found.");
-			postID = request.getPostID();
-			commentID = request.getCommentID();
+			throw new RuntimeException("Not Found.");
 		}
 
 		var like = Likes.builder().postID(postID).commentID(commentID).userID(user.getId()).build();
