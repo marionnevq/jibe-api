@@ -3,9 +3,12 @@ package com.ssglobal.revalida.jibe.service;
 import com.ssglobal.revalida.jibe.dto.CommentDTO;
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.model.Comment;
+import com.ssglobal.revalida.jibe.model.Post;
 import com.ssglobal.revalida.jibe.repository.CommentRepository;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
+import com.ssglobal.revalida.jibe.util.NotFoundException;
+
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -68,5 +71,17 @@ public class CommentService {
         commentRepository.deleteById(commentId);
 
         return modelMapper.map(comment.get(), CommentDTO.class);
+    }
+    
+    public void update(final Integer commentID, final CommentDTO commentDTO) {
+        final Comment comment = commentRepository.findById(commentID)
+                .orElseThrow(NotFoundException::new);
+        mapToEntity(commentDTO, comment);
+        commentRepository.save(comment);
+    }
+    
+    private Comment mapToEntity(final CommentDTO commentDTO, final Comment comment) {
+        comment.setValue(commentDTO.getValue());
+		return comment;
     }
 }

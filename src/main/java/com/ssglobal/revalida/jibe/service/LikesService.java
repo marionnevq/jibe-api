@@ -1,5 +1,4 @@
 package com.ssglobal.revalida.jibe.service;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,8 @@ public class LikesService {
 	public LikesDTO createLike(LikesDTO request, String token) {
 		final String jwt = token.substring(7);
 		String username = jwtService.extractUsername(jwt);
-		User user = userRepository.findByUsername(username).orElseThrow(NotFoundException::new);
+		User user = userRepository.findByUsername(username)
+				.orElseThrow(NotFoundException::new);
 		var commentID = 0;
 		var postID = 0;
 		if (request.getCommentID() == null) {
@@ -36,7 +36,11 @@ public class LikesService {
 			throw new RuntimeException("Not Found.");
 		}
 
-		var like = Likes.builder().postID(postID).commentID(commentID).userID(user.getId()).build();
+		var like = Likes.builder()
+				.postID(postID)
+				.commentID(commentID)
+				.userID(user.getId())
+				.build();
 
 		var saved = likesRepository.save(like);
 		return modelMapper.map(saved, LikesDTO.class);

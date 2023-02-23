@@ -1,16 +1,21 @@
 package com.ssglobal.revalida.jibe.service;
 
-import com.ssglobal.revalida.jibe.dto.PostDTO;
-import com.ssglobal.revalida.jibe.model.Post;
-import com.ssglobal.revalida.jibe.repository.PostRepository;
-import com.ssglobal.revalida.jibe.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
+import com.ssglobal.revalida.jibe.dto.LikesDTO;
+import com.ssglobal.revalida.jibe.dto.PostDTO;
+import com.ssglobal.revalida.jibe.model.Likes;
+import com.ssglobal.revalida.jibe.model.Post;
+import com.ssglobal.revalida.jibe.model.User;
+import com.ssglobal.revalida.jibe.repository.PostRepository;
+import com.ssglobal.revalida.jibe.repository.UserRepository;
+import com.ssglobal.revalida.jibe.security.JwtService;
+import com.ssglobal.revalida.jibe.util.NotFoundException;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +24,7 @@ public class PostService {
     private final ModelMapper modelMapper;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+	private final JwtService jwtService;
 
 
     public PostDTO createPost(PostDTO request) {
@@ -66,6 +72,33 @@ public class PostService {
 
         return posts;
     }
+    
+    public boolean update(final Integer id, final PostDTO postDTO) {
+    	final Post post = postRepository.findById(id)
+    			.orElseThrow(NotFoundException::new);
+    	mapToEntity(postDTO, post);
+    	boolean isSuccess = postRepository.save(post) != null;
+    	return isSuccess;
+    }
+    
+    private Post mapToEntity(final PostDTO postDTO, final Post post) {
+    	post.setBody(postDTO.getBody());
+		return post;
+    }
+    
+//    public List<PostDTO> getPostByFollowing(Integer id, String token) {
+//    	final String jwt = token.substring(7);
+//		String username = jwtService.extractUsername(jwt);
+//		User user = userRepository.findByUsername(username)
+//				.orElseThrow(NotFoundException::new);
+//		return null;
+//		
+//    }
+    	
+//    	 final Follow following = followDTO.getFolloweeID() == null ? null : followRepository.findById(followDTO.getFolloweeID())
+//                 .orElseThrow(() -> new NotFoundException("Followee Not Found"));
+//		return following;
+
 
     public PostDTO getPostById(Integer id) {
         var post = postRepository.findById(id);
@@ -80,6 +113,8 @@ public class PostService {
 //                .imageUrl(post.get().getImageUrl())
 //                .build();
     }
+    
+    
 
     public PostDTO deletePostById(Integer id) {
         var post = postRepository.findById(id);

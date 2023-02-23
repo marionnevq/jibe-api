@@ -3,6 +3,8 @@ package com.ssglobal.revalida.jibe.controller;
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.model.Post;
 import com.ssglobal.revalida.jibe.service.PostService;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,13 @@ public class PostController {
     @GetMapping()
     public ResponseEntity<List<PostDTO>> selectAllPosts() {
         return ResponseEntity.ok().body(postService.getAllPosts());
+    }
+    
+    @PutMapping("/update/{postID}")
+    public ResponseEntity<Void> updatePost(@PathVariable final Integer postID,
+            @RequestBody @Valid final PostDTO postDTO) {
+        postService.update(postID, postDTO);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
