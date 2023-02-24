@@ -5,11 +5,8 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.ssglobal.revalida.jibe.dto.LikesDTO;
 import com.ssglobal.revalida.jibe.dto.PostDTO;
-import com.ssglobal.revalida.jibe.model.Likes;
 import com.ssglobal.revalida.jibe.model.Post;
-import com.ssglobal.revalida.jibe.model.User;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;

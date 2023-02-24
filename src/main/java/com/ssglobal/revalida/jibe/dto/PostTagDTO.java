@@ -1,9 +1,9 @@
 package com.ssglobal.revalida.jibe.dto;
 
-import java.util.List;
-
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
