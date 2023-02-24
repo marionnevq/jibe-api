@@ -31,7 +31,7 @@ public class UsersConfig {
                     .email("gfurnell@gmail.com")
                     .password(passwordEncoder.encode("Georgie2255"))
                     .bio("Inverse full-range flexibility")
-                    .imageUrl("http://dummyimage.com/239x201.png/cc0000/ffffff")
+                    .imageUrl("http://dummyimage.com/200x200.png/9933ff/ffffff")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -42,7 +42,7 @@ public class UsersConfig {
                     .email("svarey@gmail.com")
                     .password(passwordEncoder.encode("Suzie2255"))
                     .bio("Synergistic 24 hour intranet")
-                    .imageUrl("http://dummyimage.com/239x201.png/cc0000/ffffff")
+                    .imageUrl("http://dummyimage.com/200x200.png/33fff5/ffffff")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -53,7 +53,7 @@ public class UsersConfig {
                     .email("smattholie@gmail.com")
                     .password(passwordEncoder.encode("Sharline2255"))
                     .bio("Universal coherent moderator")
-                    .imageUrl("http://dummyimage.com/239x201.png/cc0000/ffffff")
+                    .imageUrl("http://dummyimage.com/200x200.png/33ff5f/ffffff")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -64,7 +64,7 @@ public class UsersConfig {
                     .email("ogorgen@gmail.com")
                     .password(passwordEncoder.encode("Oren2255"))
                     .bio("Organized fault-tolerant flexibility")
-                    .imageUrl("http://dummyimage.com/239x201.png/cc0000/ffffff")
+                    .imageUrl("http://dummyimage.com/200x200.png/ff4133/ffffff")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -73,10 +73,10 @@ public class UsersConfig {
                     .lastname("Doe")
                     .username("admin")
                     .email("admin@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("Admin2255!"))
                     .bio("Extended interactive synergy")
-                    .imageUrl("http://dummyimage.com/239x201.png/cc0000/ffffff")
-                    .firstTimeLogin(false)
+                    .imageUrl("")
+                    .firstTimeLogin(true)
                     .role(Role.USER)
                     .build();
 

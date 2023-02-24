@@ -24,7 +24,7 @@ public class UserService {
     private final ModelMapper modelMapper;
 	private final JwtService jwtService;
 
-    public UserResponseDTO getCurrentUser(String email) {
+    public UserDTO getCurrentUser(String email) {
         var user = userRepository.findByEmail(email)
                 .or(() -> {return userRepository.findByUsername(email);});
 
@@ -33,7 +33,7 @@ public class UserService {
         }
 
         var foundUser = user.get();
-        return modelMapper.map(foundUser, UserResponseDTO.class);
+        return modelMapper.map(foundUser, UserDTO.class);
 //        return UserResponseDTO.builder()
 //                .firstname(foundUser.getFirstname())
 //                .lastname(foundUser.getLastname())
@@ -121,9 +121,21 @@ public class UserService {
 		if(userDTO.getUsername() != null) {
 			user.setUsername(userDTO.getUsername());
 		}
+
+        if(userDTO.getFirstTimeLogin() != null) {
+            user.setFirstTimeLogin(userDTO.getFirstTimeLogin());
+        }
 		
 		userRepository.save(user);
+
 		return true;
     }
-    
+
+    public List<UserResponseDTO> getRandomUsers(Integer count, Integer userID) {
+        var accounts = userRepository.findByIdNot(userID, count);
+
+        return accounts.stream().map((user) -> {
+            return modelMapper.map(user, UserResponseDTO.class);
+        }).toList();
+    }
 }

@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponseDTO {
+
     private String firstname;
     private String lastname;
     private String bio;
     private String username;
     private String email;
     private String imageUrl;
+    private Boolean firstTimeLogin;
 }
