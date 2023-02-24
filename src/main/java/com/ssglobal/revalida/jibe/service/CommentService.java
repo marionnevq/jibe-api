@@ -1,17 +1,18 @@
 package com.ssglobal.revalida.jibe.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+
 import com.ssglobal.revalida.jibe.dto.CommentDTO;
-import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.model.Comment;
 import com.ssglobal.revalida.jibe.repository.CommentRepository;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor

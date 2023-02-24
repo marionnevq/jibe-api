@@ -1,5 +1,8 @@
 package com.ssglobal.revalida.jibe.service;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+
 import com.ssglobal.revalida.jibe.dto.PostTagDTO;
 import com.ssglobal.revalida.jibe.dto.TagReferenceDTO;
 import com.ssglobal.revalida.jibe.model.PostTag;
@@ -7,11 +10,9 @@ import com.ssglobal.revalida.jibe.model.TagReference;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.PostTagRepository;
 import com.ssglobal.revalida.jibe.repository.TagReferenceRepository;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
+import com.ssglobal.revalida.jibe.util.NotFoundException;
 
-import java.util.Locale;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -57,7 +58,19 @@ public class TagService {
                     .tagReference(tag.get())
                     .build();
             return modelMapper.map(postTagRepository.save(postTag),PostTagDTO.class);
-
         }
+    }
+    
+    public boolean update(final Integer tagID, final TagReferenceDTO tagReferenceDTO) {
+    	final TagReference tag = tagReferenceRepository.findById(tagID)
+    			.orElseThrow(NotFoundException::new);
+    	mapToEntity(tagReferenceDTO, tag);
+    	boolean isSuccess = tagReferenceRepository.save(tag) != null;
+    	return isSuccess;
+    }
+    
+    private TagReference mapToEntity(final TagReferenceDTO tagReferenceDTO, final TagReference tagReference) {
+    	tagReference.setTagValue(tagReferenceDTO.getTagValue());
+    	return tagReference;
     }
 }
