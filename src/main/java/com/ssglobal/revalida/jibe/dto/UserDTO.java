@@ -50,10 +50,10 @@ public class UserDTO {
 
     private Boolean firstTimeLogin;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    private Integer userLike;
-
-    private Integer userFollow;
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
+//
+//    private Integer userLike;
+//
+//    private Integer userFollow;
 }
