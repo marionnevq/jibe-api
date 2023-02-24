@@ -1,16 +1,25 @@
 package com.ssglobal.revalida.jibe.controller;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.ssglobal.revalida.jibe.dto.PostDTO;
+import com.ssglobal.revalida.jibe.dto.UserDTO;
 import com.ssglobal.revalida.jibe.dto.UserResponseDTO;
-import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;
 import com.ssglobal.revalida.jibe.service.PostService;
 import com.ssglobal.revalida.jibe.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api")
@@ -33,7 +42,6 @@ public class UserController {
 
     @GetMapping("/profiles")
     public ResponseEntity<List<UserResponseDTO>> searchUsersByUsername(@RequestBody String searchQuery) {
-
         return ResponseEntity.ok(userService.findUsersByUsername(String.format("%%%s%%",searchQuery)));
 
     }
@@ -49,6 +57,10 @@ public class UserController {
         return ResponseEntity.ok(postService.getPostsByUser(username));
 
     }
-
+    
+    @PutMapping("/profiles/update")
+    public ResponseEntity<Boolean> updateUser(@RequestBody @Valid final UserDTO userDTO, @RequestHeader(name = "Authorization") String token) {
+        return ResponseEntity.ok().body(userService.update(userDTO, token));
+    }
 
 }
