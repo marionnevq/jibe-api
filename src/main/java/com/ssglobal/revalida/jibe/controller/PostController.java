@@ -2,8 +2,10 @@ package com.ssglobal.revalida.jibe.controller;
 
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.model.Post;
+import com.ssglobal.revalida.jibe.security.JwtService;
 import com.ssglobal.revalida.jibe.service.PostService;
 
+import com.ssglobal.revalida.jibe.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
+    private final JwtService jwtService;
+    private final UserService userService;
 
     @PostMapping()
     public ResponseEntity<PostDTO> addPost(@RequestBody PostDTO request) {
@@ -37,6 +41,14 @@ public class PostController {
     @GetMapping("/{id}")
     public ResponseEntity<PostDTO> selectPostById(@PathVariable Integer id) {
         return ResponseEntity.ok().body(postService.getPostById(id));
+    }
+
+    @GetMapping("/following")
+    public ResponseEntity<List<PostDTO>> getFollowingPosts(@RequestHeader(name = "Authorization") String token) {
+        final String jwt = token.substring(7);
+        final String username = jwtService.extractUsername(jwt);
+//        return ResponseEntity.ok(username);
+        return ResponseEntity.ok().body(postService.getFollowingPosts(username));
     }
 
     @DeleteMapping("/{id}")

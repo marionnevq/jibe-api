@@ -10,6 +10,7 @@ import java.util.Optional;
 
 
 public interface FollowRepository extends JpaRepository<Follow, Integer> {
+    List<Follow> findByFollower_Email(String email);
 
     List<Follow> findByFollower_IdOrderByFollower_FirstnameDesc(Integer id);
     Optional<Follow> findByFollower_UsernameStartsWith(String username);

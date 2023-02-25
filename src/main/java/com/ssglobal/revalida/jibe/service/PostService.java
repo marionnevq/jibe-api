@@ -2,6 +2,7 @@ package com.ssglobal.revalida.jibe.service;
 
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.repository.FollowRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 	private final JwtService jwtService;
+    private final FollowRepository followRepository;
 
 
     public PostDTO createPost(PostDTO request) {
@@ -148,5 +150,13 @@ public class PostService {
 
 
         return posts;
+    }
+
+    public List<PostDTO> getFollowingPosts(String username) {
+        var followingUsers = followRepository.findByFollower_Username(username);
+        var followingUserIds = followingUsers.stream().map(follow -> {return  follow.getFollowee().getId();}).toList();
+        var posts = postRepository.findByUser_IdInOrderByDatePostedDesc(followingUserIds);
+
+        return posts.stream().map(post -> modelMapper.map(post,PostDTO.class)).toList();
     }
 }
