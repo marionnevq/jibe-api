@@ -37,10 +37,12 @@ public class AuthenticationController {
         try {
             return ResponseEntity.ok(authenticationService.authenticate(request));
         } catch (Exception e) {
+            System.out.println(e.getClass().getName());
             if (e instanceof BadCredentialsException) {
                 error = "Invalid Credentials";
+            } else {
+                error = e.getMessage();
             }
-            error = e.getMessage();
         }
 
         return ResponseEntity.status(401).body(error);
