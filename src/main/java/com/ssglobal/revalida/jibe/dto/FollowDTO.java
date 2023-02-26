@@ -13,5 +13,5 @@ public class FollowDTO {
 
     private Integer followerID;
 
-    private Integer followeeID;
+    private String followeeUsername;
 }
