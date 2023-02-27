@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
+    @Query(nativeQuery = true,value ="select * from _user u where u.id != ?1 order by random() limit ?2")
+    List<User> findByIdNot(Integer id, Integer count);
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
     Optional<User> findByUsername(String username);

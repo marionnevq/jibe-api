@@ -2,6 +2,7 @@ package com.ssglobal.revalida.jibe.controller;
 
 import java.util.List;
 
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class UserController {
 
 
     @GetMapping("/users/me")
-    public ResponseEntity<UserResponseDTO> selectCurrentUser(@RequestHeader(name = "Authorization") String token) {
+    public ResponseEntity<UserDTO> selectCurrentUser(@RequestHeader(name = "Authorization") String token) {
         final String jwt = token.substring(7);
         final String userEmail = jwtService.extractUsername(jwt);
         return ResponseEntity.ok().body(userService.getCurrentUser(userEmail));
@@ -61,6 +62,11 @@ public class UserController {
     @PutMapping("/profiles/update")
     public ResponseEntity<Boolean> updateUser(@RequestBody @Valid final UserDTO userDTO, @RequestHeader(name = "Authorization") String token) {
         return ResponseEntity.ok().body(userService.update(userDTO, token));
+    }
+
+    @GetMapping("/profiles/random/{count}/{userID}")
+    public ResponseEntity<List<UserResponseDTO>> getRandomUsers(@PathVariable Integer count, @PathVariable Integer userID){
+        return ResponseEntity.ok().body(userService.getRandomUsers(count, userID));
     }
 
 }

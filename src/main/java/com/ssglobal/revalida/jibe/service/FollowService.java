@@ -20,7 +20,7 @@ public class FollowService {
 
     public FollowDTO createFollow(FollowDTO request) {
         var follower = userRepository.findById(request.getFollowerID());
-        var followee = userRepository.findById(request.getFolloweeID());
+        var followee = userRepository.findByUsername(request.getFolloweeUsername());
 
         if(follower.isEmpty() || followee.isEmpty()) {
             throw new RuntimeException("invalid follow");
