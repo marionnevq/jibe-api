@@ -84,7 +84,75 @@ public class UsersConfig {
                     .role(Role.USER)
                     .build();
             
-            List<User> users =List.of(user1,user2,user3,user4,user5);
+            User ice = User.builder()
+                    .firstname("Christian")
+                    .lastname("Alday")
+                    .username("Icesxz")
+                    .email("christian.alday@gmail.com")
+                    .password(passwordEncoder.encode("admin2255"))
+                    .bio("If I get takot, would you hawak me tight?\r\n"
+                    		+ "If I gawa something mali, would you make it right?\r\n"
+                    		+ "If I build an apoy, would you bantay the flame?\r\n"
+                    		+ "If I sabi I miss you, would you ramdam the same?")
+                    .imageUrl("https://www.facebook.com/photo/?fbid=2332926670067790&set=a.153198421373970")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User jim = User.builder()
+                    .firstname("Jim Lloyd")
+                    .lastname("De Guzman")
+                    .username("Jimsxz")
+                    .email("jimlloyddeguzman60@gmail.com")
+                    .password(passwordEncoder.encode("admin2255"))
+                    .bio("Kung ayaw mong mainlove ng todo\r\n"
+                    		+ "Ay huwag mo ng susubukang tingnan pa ako,\r\n"
+                    		+ "dahil baka mabaliw ka ng husto!!\r\n"
+                    		+ "")
+                    .imageUrl("https://www.facebook.com/photo/?fbid=5844522632303797&set=a.111122295643888&__tn__=%3C")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User mars = User.builder()
+                    .firstname("Marionne")
+                    .lastname("Quintana")
+                    .username("Marszx")
+                    .email("quintanamarionne@gmail.com")
+                    .password(passwordEncoder.encode("admin2255"))
+                    .bio("Tao ka ba?..............\r\n"
+                    		+ "naninigurado lang. boom")
+                    .imageUrl("https://www.facebook.com/photo/?fbid=5608656919168662&set=a.147189011982174&__tn__=%3C")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User nikki = User.builder()
+                    .firstname("Krishna Nicole")
+                    .lastname("Fagara")
+                    .username("Nikki143")
+                    .email("krishnanicolefagara@gmail.com")
+                    .password(passwordEncoder.encode("admin2255"))
+                    .bio("“In a relationship”\r\n"              		
+                    		+ "Charr. Kinabahan yung may gusto sakin")
+                    .imageUrl("https://www.facebook.com/photo/?fbid=5143306602456035&set=a.112784658841613")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User jayann = User.builder()
+                    .firstname("Jay-Ann")
+                    .lastname("Oliveros")
+                    .username("jayannisdname")
+                    .email("jayann20oliveros@gmail.com")
+                    .password(passwordEncoder.encode("admin2255"))
+                    .bio("Kahit anong suot mo, mas bagay parin ako sayo.")
+                    .imageUrl("https://www.facebook.com/photo/?fbid=2249309448595490&set=a.113383658854757")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann);
 
             userRepository.saveAll(users);
 
@@ -103,7 +171,11 @@ public class UsersConfig {
 
             Post p7 = Post.builder().body("Post Body 7").datePosted(LocalDate.now().minusDays(5)).imageUrl("picsum.photos/200").user(userRepository.findById(10004).get()).build();
 
-            List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7);
+            Post p8 = Post.builder().body("ahh, geh, luh. \r\n"
+            		+ "yan yung pambansang ibon pre.").datePosted(LocalDate.now().minusDays(9)).imageUrl("https://media.tenor.com/SM55NxnE6_kAAAAM/lick-boy-lick.gif").user(userRepository.findById(10005).get()).build();
+
+            
+            List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8);
 
             postRepository.saveAll(posts);
             
@@ -119,9 +191,59 @@ public class UsersConfig {
     	    		.media("https://pbs.twimg.com/profile_images/1074985128881864704/-WV56RC5_400x400.jpg")
     	    		.value("This is hatdog.")
     	    		.post(postRepository.findById(1).get())
-    	    		.user(userRepository.findById(10003).get()).build();
+    	    		.user(userRepository.findById(10001).get()).build();
             
-            List<Comment> comment = List.of(c1,c2);
+            Comment c3 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://pbs.twimg.com/profile_images/653700295395016708/WjGTnKGQ_400x400.png")
+    	    		.value("Wow nice banana.")
+    	    		.post(postRepository.findById(2).get())
+    	    		.user(userRepository.findById(10002).get()).build();
+            
+            Comment c4 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://media.tenor.com/9ModG8XWV5AAAAAd/puss-in.gif")
+    	    		.value("Can you dm me this photo?")
+    	    		.post(postRepository.findById(2).get())
+    	    		.user(userRepository.findById(10004).get()).build();
+            
+            Comment c5 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://media.tenor.com/eorzo18pmJoAAAAS/cringe.gif")
+    	    		.value("Cringe")
+    	    		.post(postRepository.findById(1).get())
+    	    		.user(userRepository.findById(10005).get()).build();
+            
+            Comment c6 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://media.tenor.com/PGVvHe1jMX8AAAAC/funny-laugh.gif")
+    	    		.value("Benta! HAHAHAHA XD XD")
+    	    		.post(postRepository.findById(8).get())
+    	    		.user(userRepository.findById(10006).get()).build();
+            
+            Comment c7 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://japanpowered.com/media/images/cringe-baby-picture-800x450.jpg")
+    	    		.value("ah ok")
+    	    		.post(postRepository.findById(8).get())
+    	    		.user(userRepository.findById(10008).get()).build();
+            
+            Comment c8 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://i.pinimg.com/736x/02/d8/c8/02d8c89ffe273e093d06036f49ed8302.jpg")
+    	    		.value("hehe")
+    	    		.post(postRepository.findById(8).get())
+    	    		.user(userRepository.findById(10009).get()).build();
+            
+            Comment c9 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://www.incimages.com/uploaded_files/image/1920x1080/getty_627216922_2000149920009280228_336748.jpg")
+    	    		.value("Ayos yan!")
+    	    		.post(postRepository.findById(8).get())
+    	    		.user(userRepository.findById(10007).get()).build();
+            
+            
+            List<Comment> comment = List.of(c1, c2, c3, c4, c5, c6, c7, c8, c9);
             commentRepository.saveAll(comment);
 
         };
