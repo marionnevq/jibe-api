@@ -27,6 +27,4 @@ public class CommentDTO {
 	@NotNull
 	private LocalDate dateCommented;
 
-
-
 }

@@ -1,27 +1,31 @@
 package com.ssglobal.revalida.jibe.config;
 
 
-import com.ssglobal.revalida.jibe.model.Post;
-import com.ssglobal.revalida.jibe.model.Role;
-import com.ssglobal.revalida.jibe.model.User;
-import com.ssglobal.revalida.jibe.repository.PostRepository;
-import com.ssglobal.revalida.jibe.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.LocalDate;
-import java.util.List;
+import com.ssglobal.revalida.jibe.model.Comment;
+import com.ssglobal.revalida.jibe.model.Post;
+import com.ssglobal.revalida.jibe.model.Role;
+import com.ssglobal.revalida.jibe.model.User;
+import com.ssglobal.revalida.jibe.repository.CommentRepository;
+import com.ssglobal.revalida.jibe.repository.PostRepository;
+import com.ssglobal.revalida.jibe.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
 public class UsersConfig {
     private final PasswordEncoder passwordEncoder;
     @Bean
-    CommandLineRunner commandLineRunnerUsers(UserRepository userRepository, PostRepository postRepository) {
+    CommandLineRunner commandLineRunnerUsers(UserRepository userRepository, PostRepository postRepository,
+    		CommentRepository commentRepository) {
 
         return args -> {
             User user1 = User.builder()
@@ -79,7 +83,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-
+            
             List<User> users =List.of(user1,user2,user3,user4,user5);
 
             userRepository.saveAll(users);
@@ -102,6 +106,24 @@ public class UsersConfig {
             List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7);
 
             postRepository.saveAll(posts);
+            
+            Comment c1 = Comment.builder()
+	    		.dateCommented(LocalDate.now())
+	    		.media("https://media.moddb.com/cache/images/members/5/4550/4549205/thumb_620x2000/duck.jpg")
+	    		.value("This is banana.")
+	    		.post(postRepository.findById(2).get())
+	    		.user(userRepository.findById(10003).get()).build();
+           
+            Comment c2 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://pbs.twimg.com/profile_images/1074985128881864704/-WV56RC5_400x400.jpg")
+    	    		.value("This is hatdog.")
+    	    		.post(postRepository.findById(1).get())
+    	    		.user(userRepository.findById(10003).get()).build();
+            
+            List<Comment> comment = List.of(c1,c2);
+            commentRepository.saveAll(comment);
+
         };
     }
 
