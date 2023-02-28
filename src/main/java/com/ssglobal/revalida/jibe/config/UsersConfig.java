@@ -98,7 +98,7 @@ public class UsersConfig {
                     		+ "If I gawa something mali, would you make it right?\r\n"
                     		+ "If I build an apoy, would you bantay the flame?\r\n"
                     		+ "If I sabi I miss you, would you ramdam the same?")
-                    .imageUrl("https://media.discordapp.net/attachments/902067553210335237/970647689144434738/sana-sana-twice.gif")
+                    .imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843224329191495/Sana-Ateneo.jpg?width=363&height=508")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -195,10 +195,9 @@ public class UsersConfig {
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10004).get()).build();
 
-            Post p8 = Post.builder().body("ahh, geh, luh. \r\n"
-            		+ "yan yung pambansang ibon pre.")
+            Post p8 = Post.builder().body("Dili nalang ako mag-talk")
             		.datePosted(LocalDateTime.now().minusDays(9))
-            		.imageUrl("https://media.tenor.com/SM55NxnE6_kAAAAM/lick-boy-lick.gif")
+            		.imageUrl("https://media.discordapp.net/attachments/902067553210335237/970647689144434738/sana-sana-twice.gif")
             		.user(userRepository.findById(10005).get()).build();
 
             Post p9= Post.builder().body("“Oo nga pala, hindi nga pala tayo”. "
@@ -222,8 +221,12 @@ public class UsersConfig {
             		.imageUrl("https://i.pinimg.com/236x/d7/00/fa/d700fa0fbfd40a47d94ea1435c45d7d5.jpg")
             		.user(userRepository.findById(10009).get()).build();
 
+			Post p13 = Post.builder().body("Congratulations!")
+					.datePosted(LocalDateTime.now().minusDays(15))
+					.imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843225931399178/Ryujin_UP.jpg?width=349&height=508")
+					.user(userRepository.findById(10005).get()).build();
             
-            List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+            List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13);
 
             postRepository.saveAll(posts);
             
