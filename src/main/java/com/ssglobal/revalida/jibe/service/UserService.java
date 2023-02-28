@@ -5,7 +5,13 @@ package com.ssglobal.revalida.jibe.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
+import com.ssglobal.revalida.jibe.repository.FollowRepository;
+import com.ssglobal.revalida.jibe.repository.PostRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ssglobal.revalida.jibe.dto.UserDTO;
@@ -23,6 +29,9 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 	private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
+    private final PostRepository postRepository;
+    private final FollowRepository followRepository;
 
     public UserDTO getCurrentUser(String email) {
         var user = userRepository.findByEmail(email)
@@ -33,7 +42,15 @@ public class UserService {
         }
 
         var foundUser = user.get();
-        return modelMapper.map(foundUser, UserDTO.class);
+        Integer numPosts = Math.toIntExact(postRepository.countByUser(foundUser));
+        Integer numFollowers = Math.toIntExact(followRepository.countByFollowee(foundUser));
+        Integer numFollowing = Math.toIntExact(followRepository.countByFollower(foundUser));
+
+        UserDTO userDTO = modelMapper.map(foundUser, UserDTO.class);
+        userDTO.setPostsCount(numPosts);
+        userDTO.setFollowersCount(numFollowers);
+        userDTO.setFollowingCount(numFollowing);
+        return  userDTO;
 //        return UserResponseDTO.builder()
 //                .firstname(foundUser.getFirstname())
 //                .lastname(foundUser.getLastname())
@@ -76,7 +93,15 @@ public class UserService {
         }
 
         var foundUser = user.get();
-        return modelMapper.map(foundUser, UserResponseDTO.class);
+        Integer numPosts = Math.toIntExact(postRepository.countByUser(foundUser));
+        Integer numFollowers = Math.toIntExact(followRepository.countByFollowee(foundUser));
+        Integer numFollowing = Math.toIntExact(followRepository.countByFollower(foundUser));
+
+        UserResponseDTO userResponse = modelMapper.map(foundUser, UserResponseDTO.class);
+        userResponse.setPostsCount(numPosts);
+        userResponse.setFollowersCount(numFollowers);
+        userResponse.setFollowingCount(numFollowing);
+        return userResponse;
 
 //        return UserResponseDTO.builder()
 //                .firstname(foundUser.getFirstname())
@@ -137,5 +162,12 @@ public class UserService {
         return accounts.stream().map((user) -> {
             return modelMapper.map(user, UserResponseDTO.class);
         }).toList();
+    }
+
+    public Boolean confirmChanges(Integer userID,RegisterRequestDTO request) {
+        User user = userRepository.findById(userID)
+                .orElseThrow(NotFoundException::new);
+
+        return passwordEncoder.matches(request.getPassword(), user.getPassword());
     }
 }

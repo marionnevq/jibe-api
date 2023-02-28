@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.repository;
 
+import com.ssglobal.revalida.jibe.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ssglobal.revalida.jibe.model.Follow;
@@ -10,6 +11,9 @@ import java.util.Optional;
 
 
 public interface FollowRepository extends JpaRepository<Follow, Integer> {
+    long countByFollower(User follower);
+    long countByFollowee(User followee);
+    long countByFollowee_Username(String username);
     List<Follow> findByFollower_Email(String email);
 
     List<Follow> findByFollower_IdOrderByFollower_FirstnameDesc(Integer id);

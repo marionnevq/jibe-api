@@ -18,4 +18,9 @@ public class UserResponseDTO {
     private String email;
     private String imageUrl;
     private Boolean firstTimeLogin;
+
+    private Integer postsCount;
+
+    private Integer followersCount;
+    private Integer followingCount;
 }

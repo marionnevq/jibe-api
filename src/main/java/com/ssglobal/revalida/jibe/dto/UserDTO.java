@@ -39,10 +39,17 @@ public class UserDTO {
 
     private Boolean firstTimeLogin;
 
+    private Integer postsCount;
+
+    private Integer followersCount;
+    private Integer followingCount;
+
 //    @Enumerated(EnumType.STRING)
 //    private Role role;
 //
 //    private Integer userLike;
 //
 //    private Integer userFollow;
+
+
 }
