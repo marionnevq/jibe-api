@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssglobal.revalida.jibe.model.Role;
 
 import jakarta.persistence.EnumType;
@@ -34,8 +35,9 @@ public class UserDTO {
     
 
     private String bio;
-    
 
+
+    @JsonIgnore
     private String password;
 
 

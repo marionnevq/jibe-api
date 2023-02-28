@@ -119,7 +119,7 @@ public class UsersConfig {
                     .lastname("Quintana")
                     .username("Marszx")
                     .email("quintanamarionne@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("Admin2255!"))
                     .bio("Tao ka ba?..............\r\n"
                     		+ "naninigurado lang. boom")
                     .imageUrl("https://www.facebook.com/photo/?fbid=5608656919168662&set=a.147189011982174&__tn__=%3C")
@@ -157,9 +157,9 @@ public class UsersConfig {
             userRepository.saveAll(users);
 
 
-            Post p1 = Post.builder().body("Post Body 1").datePosted(LocalDate.now()).imageUrl("picsum.photos/200").user(userRepository.findById(10000).get()).build();
+            Post p1 = Post.builder().body("Post Body 1").datePosted(LocalDate.now()).imageUrl("https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg?w=400&h=300&c=crop").user(userRepository.findById(10000).get()).build();
 
-            Post p2 = Post.builder().body("Post Body 2").datePosted(LocalDate.now()).imageUrl("picsum.photos/200").user(userRepository.findById(10000).get()).build();
+            Post p2 = Post.builder().body("Post Body 2").datePosted(LocalDate.now()).user(userRepository.findById(10000).get()).build();
 
             Post p3 = Post.builder().body("Post Body 3").datePosted(LocalDate.now().minusDays(1)).imageUrl("picsum.photos/200").user(userRepository.findById(10001).get()).build();
 
