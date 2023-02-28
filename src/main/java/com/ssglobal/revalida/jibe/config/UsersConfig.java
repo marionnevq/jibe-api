@@ -91,14 +91,14 @@ public class UsersConfig {
             User ice = User.builder()
                     .firstname("Christian")
                     .lastname("Alday")
-                    .username("Icesxz")
+                    .username("iceald")
                     .email("christian.alday@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("Admin2255@"))
                     .bio("If I get takot, would you hawak me tight?\r\n"
                     		+ "If I gawa something mali, would you make it right?\r\n"
                     		+ "If I build an apoy, would you bantay the flame?\r\n"
                     		+ "If I sabi I miss you, would you ramdam the same?")
-                    .imageUrl("https://www.facebook.com/photo/?fbid=2332926670067790&set=a.153198421373970")
+                    .imageUrl("https://media.discordapp.net/attachments/902067553210335237/970647689144434738/sana-sana-twice.gif")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
