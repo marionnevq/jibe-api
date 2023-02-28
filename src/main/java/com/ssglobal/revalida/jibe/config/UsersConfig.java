@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.ssglobal.revalida.jibe.model.Comment;
+import com.ssglobal.revalida.jibe.model.Follow;
 import com.ssglobal.revalida.jibe.model.Post;
 import com.ssglobal.revalida.jibe.model.Role;
 import com.ssglobal.revalida.jibe.model.User;
 import com.ssglobal.revalida.jibe.repository.CommentRepository;
+import com.ssglobal.revalida.jibe.repository.FollowRepository;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 
@@ -25,7 +27,7 @@ public class UsersConfig {
     private final PasswordEncoder passwordEncoder;
     @Bean
     CommandLineRunner commandLineRunnerUsers(UserRepository userRepository, PostRepository postRepository,
-    		CommentRepository commentRepository) {
+    		CommentRepository commentRepository, FollowRepository followRepository) {
 
         return args -> {
             User user1 = User.builder()
@@ -246,6 +248,94 @@ public class UsersConfig {
             List<Comment> comment = List.of(c1, c2, c3, c4, c5, c6, c7, c8, c9);
             commentRepository.saveAll(comment);
 
+       
+        
+        Follow f1 = Follow.builder()
+        		.followee(userRepository.findById(10005).get())
+        		.follower(userRepository.findById(10006).get()).build();
+        
+        Follow f2 = Follow.builder()
+        		.followee(userRepository.findById(10005).get())
+        		.follower(userRepository.findById(10007).get()).build();
+        
+        Follow f3 = Follow.builder()
+        		.followee(userRepository.findById(10005).get())
+        		.follower(userRepository.findById(10008).get()).build();
+        
+        Follow f4 = Follow.builder()
+        		.followee(userRepository.findById(10005).get())
+        		.follower(userRepository.findById(10009).get()).build();
+        
+        Follow f5 = Follow.builder()
+        		.followee(userRepository.findById(10006).get())
+        		.follower(userRepository.findById(10005).get()).build();
+        
+        Follow f6 = Follow.builder()
+        		.followee(userRepository.findById(10006).get())
+        		.follower(userRepository.findById(10007).get()).build();
+
+        Follow f7 = Follow.builder()
+        		.followee(userRepository.findById(10006).get())
+        		.follower(userRepository.findById(10008).get()).build();
+
+        
+        Follow f8 = Follow.builder()
+        		.followee(userRepository.findById(10006).get())
+        		.follower(userRepository.findById(10009).get()).build();
+        
+        Follow f9 = Follow.builder()
+        		.followee(userRepository.findById(10007).get())
+        		.follower(userRepository.findById(10005).get()).build();
+
+        Follow f10 = Follow.builder()
+        		.followee(userRepository.findById(10007).get())
+        		.follower(userRepository.findById(10006).get()).build();
+
+        Follow f11 = Follow.builder()
+        		.followee(userRepository.findById(10007).get())
+        		.follower(userRepository.findById(10008).get()).build();
+
+        Follow f12 = Follow.builder()
+        		.followee(userRepository.findById(10007).get())
+        		.follower(userRepository.findById(10009).get()).build();
+        
+        Follow f13 = Follow.builder()
+        		.followee(userRepository.findById(10008).get())
+        		.follower(userRepository.findById(10005).get()).build();
+        
+        Follow f14 = Follow.builder()
+        		.followee(userRepository.findById(10008).get())
+        		.follower(userRepository.findById(10006).get()).build();
+
+        Follow f15 = Follow.builder()
+        		.followee(userRepository.findById(10008).get())
+        		.follower(userRepository.findById(10007).get()).build();
+
+        Follow f16 = Follow.builder()
+        		.followee(userRepository.findById(10008).get())
+        		.follower(userRepository.findById(10009).get()).build();
+
+        Follow f17 = Follow.builder()
+        		.followee(userRepository.findById(10009).get())
+        		.follower(userRepository.findById(10005).get()).build();
+
+        Follow f18 = Follow.builder()
+        		.followee(userRepository.findById(10009).get())
+        		.follower(userRepository.findById(10006).get()).build();
+
+        Follow f19 = Follow.builder()
+        		.followee(userRepository.findById(10009).get())
+        		.follower(userRepository.findById(10007).get()).build();
+
+        Follow f20 = Follow.builder()
+        		.followee(userRepository.findById(10009).get())
+        		.follower(userRepository.findById(10008).get()).build();
+
+        
+        List<Follow> follow = List.of(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12,
+        		f13, f14, f15, f16, f17, f18, f19, f20);
+        followRepository.saveAll(follow);
+        
         };
     }
 
