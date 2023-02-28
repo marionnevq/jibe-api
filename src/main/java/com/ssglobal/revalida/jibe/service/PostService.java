@@ -2,12 +2,12 @@ package com.ssglobal.revalida.jibe.service;
 
 import java.util.List;
 
-import com.ssglobal.revalida.jibe.repository.FollowRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.model.Post;
+import com.ssglobal.revalida.jibe.repository.FollowRepository;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;

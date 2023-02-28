@@ -1,7 +1,8 @@
 package com.ssglobal.revalida.jibe.config;
 
-import jakarta.servlet.Filter;
-import lombok.RequiredArgsConstructor;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,8 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.Arrays;
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
