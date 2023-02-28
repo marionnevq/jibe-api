@@ -1,6 +1,7 @@
 package com.ssglobal.revalida.jibe.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import org.hibernate.annotations.OnDelete;
@@ -40,7 +41,7 @@ public class Post {
     private String imageUrl;
 
     @Column(nullable = false)
-    private LocalDate datePosted;
+    private LocalDateTime datePosted;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

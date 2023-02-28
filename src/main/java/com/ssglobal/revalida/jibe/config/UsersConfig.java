@@ -2,6 +2,7 @@ package com.ssglobal.revalida.jibe.config;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -161,63 +162,63 @@ public class UsersConfig {
 
 
             Post p1 = Post.builder().body("Post Body 1")
-            		.datePosted(LocalDate.now())
+            		.datePosted(LocalDateTime.now())
             		.imageUrl("https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg?w=400&h=300&c=crop")
             		.user(userRepository.findById(10000).get()).build();
 
             Post p2 = Post.builder().body("Post Body 2")
-            		.datePosted(LocalDate.now())
+            		.datePosted(LocalDateTime.now())
             		.user(userRepository.findById(10000).get()).build();
 
             Post p3 = Post.builder().body("Post Body 3")
-            		.datePosted(LocalDate.now().minusDays(1))
+            		.datePosted(LocalDateTime.now().minusDays(1))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10001).get()).build();
 
             Post p4 = Post.builder().body("Post Body 4")
-            		.datePosted(LocalDate.now().minusDays(1))
+            		.datePosted(LocalDateTime.now().minusDays(1))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10002).get()).build();
 
             Post p5 = Post.builder().body("Post Body 5")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10002).get()).build();
 
             Post p6 = Post.builder().body("Post Body 6")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10003).get()).build();
 
             Post p7 = Post.builder().body("Post Body 7")
-            		.datePosted(LocalDate.now().minusDays(5))
+            		.datePosted(LocalDateTime.now().minusDays(5))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10004).get()).build();
 
             Post p8 = Post.builder().body("ahh, geh, luh. \r\n"
             		+ "yan yung pambansang ibon pre.")
-            		.datePosted(LocalDate.now().minusDays(9))
+            		.datePosted(LocalDateTime.now().minusDays(9))
             		.imageUrl("https://media.tenor.com/SM55NxnE6_kAAAAM/lick-boy-lick.gif")
             		.user(userRepository.findById(10005).get()).build();
 
             Post p9= Post.builder().body("“Oo nga pala, hindi nga pala tayo”. "
             		+ "It’s the first line as the guitar lick settles in that sends an arrow straight to the heart– an honest, straightforward reminder of what you aren’t.")
-            		.datePosted(LocalDate.now().minusDays(7))
+            		.datePosted(LocalDateTime.now().minusDays(7))
             		.imageUrl("https://i.ytimg.com/vi/mV8_c6XKG34/maxresdefault.jpg")
             		.user(userRepository.findById(10006).get()).build();
 
             Post p10= Post.builder().body("LUH! Kulang ka sa lambing gago")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("bit.ly/3ZtJM4v")
             		.user(userRepository.findById(10007).get()).build();
 
             Post p11= Post.builder().body("Selfie sa sea. kAs1 Ang F3eL1n6xz Q 4 u n3vEr m0nG mA se S3e")
-            		.datePosted(LocalDate.now().minusDays(5))
+            		.datePosted(LocalDateTime.now().minusDays(5))
             		.imageUrl("bit.ly/3mdRhhC")
             		.user(userRepository.findById(10008).get()).build();
 
             Post p12= Post.builder().body("boom")
-            		.datePosted(LocalDate.now().minusDays(1))
+            		.datePosted(LocalDateTime.now().minusDays(1))
             		.imageUrl("https://i.pinimg.com/236x/d7/00/fa/d700fa0fbfd40a47d94ea1435c45d7d5.jpg")
             		.user(userRepository.findById(10009).get()).build();
 
