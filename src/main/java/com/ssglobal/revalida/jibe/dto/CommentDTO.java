@@ -21,6 +21,10 @@ public class CommentDTO {
 	@NotNull
 	private Integer userID;
 
+	private String userUsername;
+
+	private String userImageUrl;
+
 	@NotNull
 	private Integer postID;
 

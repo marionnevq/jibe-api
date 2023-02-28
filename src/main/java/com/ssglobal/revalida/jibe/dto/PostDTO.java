@@ -23,6 +23,7 @@ public class PostDTO {
 	private String userUsername;
 	private String userFirstname;
 	private String userLastname;
+	private String userImageUrl;
 
 
 	private LocalDate datePosted;

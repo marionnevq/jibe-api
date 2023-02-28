@@ -1,4 +1,6 @@
 package com.ssglobal.revalida.jibe.service;
+import com.ssglobal.revalida.jibe.dto.CheckLikeDTO;
+import com.ssglobal.revalida.jibe.repository.PostRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class LikesService {
 	private final UserRepository userRepository;
 	private final JwtService jwtService;
 	private final LikesRepository likesRepository;
+	private final PostRepository postRepository;
 
 	public LikesDTO createLike(LikesDTO request, String token) {
 		final String jwt = token.substring(7);
@@ -50,6 +53,14 @@ public class LikesService {
 		var post = likesRepository.findById(postID);
 		return modelMapper.map(post, LikesDTO.class);
 	}
+
+	public LikesDTO getLike(CheckLikeDTO request) {
+		var user = userRepository.findById(request.getUserId());
+
+		var post = postRepository.findById(request.getPostId());
+		var like = likesRepository.findByUserIDAndPostID(user.get().getId(), post.get().getPostID());
+		return modelMapper.map(like.get(), LikesDTO.class);
+	}
 	
 	public boolean deleteLike(Integer reactionID) {
 		final Likes like = likesRepository.findById(reactionID)
@@ -57,4 +68,14 @@ public class LikesService {
 		likesRepository.delete(like);
 		return true;
 	}
+
+    public Boolean checkLike(CheckLikeDTO request) {
+		var user = userRepository.findById(request.getUserId());
+
+		var post = postRepository.findById(request.getPostId());
+
+
+
+		return likesRepository.existsByUserIDAndPostID(user.get().getId(), post.get().getPostID());
+    }
 }
