@@ -1,10 +1,7 @@
 package com.ssglobal.revalida.jibe.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ssglobal.revalida.jibe.model.Role;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,10 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDTO {
 
-	private static final long serialVersionUID = 1L;
-	
-
-    private Integer id;
+	private Integer id;
 
 
     private String firstname;

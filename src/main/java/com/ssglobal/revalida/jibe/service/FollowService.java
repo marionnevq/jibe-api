@@ -1,14 +1,16 @@
 package com.ssglobal.revalida.jibe.service;
 
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+
 import com.ssglobal.revalida.jibe.dto.FollowDTO;
 import com.ssglobal.revalida.jibe.model.Follow;
 import com.ssglobal.revalida.jibe.repository.FollowRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
