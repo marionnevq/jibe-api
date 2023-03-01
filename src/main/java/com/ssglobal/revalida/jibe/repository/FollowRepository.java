@@ -1,13 +1,12 @@
 package com.ssglobal.revalida.jibe.repository;
 
-import com.ssglobal.revalida.jibe.model.User;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ssglobal.revalida.jibe.model.Follow;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
-import java.util.Optional;
+import com.ssglobal.revalida.jibe.model.User;
 
 
 public interface FollowRepository extends JpaRepository<Follow, Integer> {
