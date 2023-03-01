@@ -32,18 +32,7 @@ public class UsersConfig {
     		CommentRepository commentRepository, FollowRepository followRepository, LikesRepository likesRepository) {
 
         return args -> {
-            User user1 = User.builder()
-                    .firstname("Jim Lloyd")
-                    .lastname("De Guzman")
-                    .username("jimlloyddg")
-                    .email("jimlloyddeguzman60@gmail.com")
-                    .password(passwordEncoder.encode("Jimlloyddg1@"))
-                    .bio("Inverse full-range flexibility")
-                    .imageUrl("http://dummyimage.com/200x200.png/9933ff/ffffff")
-                    .firstTimeLogin(false)
-                    .role(Role.USER)
-                    .build();
-            User user2 = User.builder()
+			User user2 = User.builder()
                     .firstname("Marionne")
                     .lastname("Quintana")
                     .username("mQuintana")
