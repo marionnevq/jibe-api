@@ -170,7 +170,7 @@ public class UsersConfig {
                     .firstname("Hailey")
                     .lastname("Bieber")
                     .username("ItsmeHailey")
-                    .email("selena@gmail.com")
+                    .email("hbieber@gmail.com")
                     .password(passwordEncoder.encode("Adm!N2255"))
                     .bio("I might kill my boyfriend's ... ex")
                     .imageUrl("https://guardian.ng/wp-content/uploads/2022/04/Hailey-Bieber.jpeg")
@@ -178,8 +178,81 @@ public class UsersConfig {
                     .role(Role.USER)
                     .build();
             
+            User u8 = User.builder()
+                    .firstname("Kylie")
+                    .lastname("Jenner")
+                    .username("kyliebaby")
+                    .email("kylieJ@gmail.com")
+                    .password(passwordEncoder.encode("kyL!e2255"))
+                    .bio("I am your Kylie <3")
+                    .imageUrl("https://purneauniversity.org/wp-content/uploads/2022/11/Kylie-Jenner.png")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User u9 = User.builder()
+                    .firstname("Justin")
+                    .lastname("Beiber")
+                    .username("TheJustin")
+                    .email("justinB@gmail.com")
+                    .password(passwordEncoder.encode("JusT!n2255"))
+                    .bio("Baby.. baby.. baby.. ohhh")
+                    .imageUrl("https://media.gq.com/photos/56bcb218cdf2db6945d2ef93/master/pass/bieber-coverstory-square.jpg")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User u10 = User.builder()
+                    .firstname("Kendall")
+                    .lastname("Jenner")
+                    .username("SimplyKendall")
+                    .email("kendall@gmail.com")
+                    .password(passwordEncoder.encode("Kend@all2255"))
+                    .bio("Hi, This is Kendall.")
+                    .imageUrl("https://eldiariony.com/wp-content/uploads/sites/2/2022/03/GettyImages-1340155534-e1646784906210.jpg?quality=75&strip=all&w=1200")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User u11 = User.builder()
+                    .firstname("Liza")
+                    .lastname("Soberano")
+                    .username("lizaSoberano")
+                    .email("lSoberano@gmail.com")
+                    .password(passwordEncoder.encode("L!z@2255"))
+                    .bio("Please, call me Hope.")
+                    .imageUrl("https://manilastandard.net/wp-content/uploads/2022/07/Liza-Soberano.jpg")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User u12 = User.builder()
+                    .firstname("Nadine")
+                    .lastname("Lustre")
+                    .username("nadinelustre")
+                    .email("nadinelustre@gmail.com")
+                    .password(passwordEncoder.encode("nAd!ne2255"))
+                    .bio("Wait For Me.")
+                    .imageUrl("https://www.themoviedb.org/t/p/original/mRBOxYV5STAGIuqYVMo3OKd125K.jpg")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            User u13 = User.builder()
+                    .firstname("James")
+                    .lastname("Reid")
+                    .username("jamesreid")
+                    .email("jamesreid@gmail.com")
+                    .password(passwordEncoder.encode("J@mesReid2255"))
+                    .bio("Wait For Me.")
+                    .imageUrl("https://i.mydramalist.com/RlzvR_5f.jpg")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            
             List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann,
-            		u6, u7);
+            		u6, u7, u8, u9, u10, u11, u12, u13);
 
             userRepository.saveAll(users);
 
@@ -470,44 +543,44 @@ public class UsersConfig {
         		.follower(userRepository.findById(10008).get()).build();
         
         Follow f21 = Follow.builder()
-        		.followee(userRepository.findById(10000).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10000).get()).build();
         
         Follow f22 = Follow.builder()
-        		.followee(userRepository.findById(10001).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10001).get()).build();
         
         Follow f23 = Follow.builder()
-        		.followee(userRepository.findById(10002).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10002).get()).build();
         
         Follow f24 = Follow.builder()
-        		.followee(userRepository.findById(10003).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10003).get()).build();
         
         Follow f25 = Follow.builder()
-        		.followee(userRepository.findById(10004).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10004).get()).build();
         
         Follow f26 = Follow.builder()
-        		.followee(userRepository.findById(10005).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10005).get()).build();
         
         Follow f27 = Follow.builder()
-        		.followee(userRepository.findById(10006).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10006).get()).build();
         
         Follow f28 = Follow.builder()
-        		.followee(userRepository.findById(10007).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10007).get()).build();
         
         Follow f29 = Follow.builder()
-        		.followee(userRepository.findById(10008).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10008).get()).build();
         
         Follow f30 = Follow.builder()
-        		.followee(userRepository.findById(10009).get())
-        		.follower(userRepository.findById(10010).get()).build();
+        		.followee(userRepository.findById(10010).get())
+        		.follower(userRepository.findById(10009).get()).build();
         
         List<Follow> follow = List.of(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12,
         		f13, f14, f15, f16, f17, f18, f19, f20, f21, f22,
@@ -516,43 +589,43 @@ public class UsersConfig {
       
         Likes l1 = Likes.builder()
         		.userID(10000)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l2 = Likes.builder()
         		.userID(10001)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l3 = Likes.builder()
         		.userID(10002)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l4 = Likes.builder()
         		.userID(10003)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l5 = Likes.builder()
         		.userID(10004)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l6 = Likes.builder()
         		.userID(10005)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l7 = Likes.builder()
         		.userID(10006)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l8 = Likes.builder()
         		.userID(10007)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l9 = Likes.builder()
         		.userID(10008)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l10 = Likes.builder()
         		.userID(10009)
-        		.postID(10010).build();
+        		.postID(18).build();
        
         List<Likes> likes = List.of(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
         likesRepository.saveAll(likes);
