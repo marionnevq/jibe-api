@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.ssglobal.revalida.jibe.model.Comment;
 import com.ssglobal.revalida.jibe.model.Follow;
+import com.ssglobal.revalida.jibe.model.Likes;
 import com.ssglobal.revalida.jibe.model.Post;
 import com.ssglobal.revalida.jibe.model.Role;
 import com.ssglobal.revalida.jibe.model.User;
@@ -110,7 +111,7 @@ public class UsersConfig {
                     		+ "Ay huwag mo ng susubukang tingnan pa ako,\r\n"
                     		+ "dahil baka mabaliw ka ng husto!!\r\n"
                     		+ "")
-                    .imageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Funny_Image_of_Dog_with_open_teeth.png/684px-Funny_Image_of_Dog_with_open_teeth.png?20220323025258")
+                    .imageUrl("https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -153,7 +154,20 @@ public class UsersConfig {
                     .role(Role.USER)
                     .build();
             
-            List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann);
+            User u6 = User.builder()
+                    .firstname("Selena")
+                    .lastname("Gomez")
+                    .username("DSelena")
+                    .email("selena@gmail.com")
+                    .password(passwordEncoder.encode("adm!N2255"))
+                    .bio("Kill them with kindness")
+                    .imageUrl("https://data1.ibtimes.co.in/en/full/698795/selena-gomez.png")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
+            List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann,
+            		u6);
 
             userRepository.saveAll(users);
 
@@ -239,8 +253,13 @@ public class UsersConfig {
 					.imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843225931399178/Ryujin_UP.jpg?width=349&height=508")
 					.user(userRepository.findById(10005).get()).build();
             
+            Post p18 = Post.builder().body("Jealousy... is a mental cancer.")
+					.datePosted(LocalDateTime.now().minusDays(10))
+					.imageUrl("https://www.rollingstone.com/wp-content/uploads/2023/02/selena-gomez-album-teaser.jpg")
+					.user(userRepository.findById(10010).get()).build();
+            
             List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
-            		p11, p12, p13, p14, p15, p16, p17);
+            		p11, p12, p13, p14, p15, p16, p17, p18);
 			
           
             postRepository.saveAll(posts);
@@ -443,7 +462,48 @@ public class UsersConfig {
         		f13, f14, f15, f16, f17, f18, f19, f20);
         followRepository.saveAll(follow);
       
+        Likes l1 = Likes.builder()
+        		.userID(10000)
+        		.postID(10010).build();
+        
+        Likes l2 = Likes.builder()
+        		.userID(10001)
+        		.postID(10010).build();
+        
+        Likes l3 = Likes.builder()
+        		.userID(10002)
+        		.postID(10010).build();
+        
+        Likes l4 = Likes.builder()
+        		.userID(10003)
+        		.postID(10010).build();
+        
+        Likes l5 = Likes.builder()
+        		.userID(10004)
+        		.postID(10010).build();
+        
+        Likes l6 = Likes.builder()
+        		.userID(10005)
+        		.postID(10010).build();
+        
+        Likes l7 = Likes.builder()
+        		.userID(10006)
+        		.postID(10010).build();
+        
+        Likes l8 = Likes.builder()
+        		.userID(10007)
+        		.postID(10010).build();
+        
+        Likes l9 = Likes.builder()
+        		.userID(10008)
+        		.postID(10010).build();
+        
+        Likes l10 = Likes.builder()
+        		.userID(10009)
+        		.postID(10010).build();
        
+        List<Likes> likes = List.of(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
+        likesRepository.saveAll(likes);
         
         };
     }
