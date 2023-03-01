@@ -28,9 +28,12 @@ public class PostDTO {
 	private String userLastname;
 	private String userImageUrl;
 
-
 	private LocalDateTime datePosted;
 
 	private String imageUrl;
+
+	private Integer numLikes;
+
+	private Integer numComments;
 
 }
