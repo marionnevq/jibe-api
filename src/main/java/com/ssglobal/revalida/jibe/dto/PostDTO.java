@@ -1,6 +1,7 @@
 package com.ssglobal.revalida.jibe.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,9 +26,10 @@ public class PostDTO {
 	private String userUsername;
 	private String userFirstname;
 	private String userLastname;
+	private String userImageUrl;
 
 
-	private LocalDate datePosted;
+	private LocalDateTime datePosted;
 
 	private String imageUrl;
 

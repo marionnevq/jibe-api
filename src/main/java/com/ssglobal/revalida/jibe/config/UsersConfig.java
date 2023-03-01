@@ -2,6 +2,7 @@ package com.ssglobal.revalida.jibe.config;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -90,14 +91,14 @@ public class UsersConfig {
             User ice = User.builder()
                     .firstname("Christian")
                     .lastname("Alday")
-                    .username("Icesxz")
+                    .username("iceald")
                     .email("christian.alday@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("Admin2255@"))
                     .bio("If I get takot, would you hawak me tight?\r\n"
                     		+ "If I gawa something mali, would you make it right?\r\n"
                     		+ "If I build an apoy, would you bantay the flame?\r\n"
                     		+ "If I sabi I miss you, would you ramdam the same?")
-                    .imageUrl("https://www.facebook.com/photo/?fbid=2332926670067790&set=a.153198421373970")
+                    .imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843224329191495/Sana-Ateneo.jpg?width=363&height=508")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -161,85 +162,90 @@ public class UsersConfig {
 
 
             Post p1 = Post.builder().body("Post Body 1")
-            		.datePosted(LocalDate.now())
+            		.datePosted(LocalDateTime.now())
             		.imageUrl("https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg?w=400&h=300&c=crop")
             		.user(userRepository.findById(10000).get()).build();
 
             Post p2 = Post.builder().body("Post Body 2")
-            		.datePosted(LocalDate.now())
+            		.datePosted(LocalDateTime.now())
             		.user(userRepository.findById(10000).get()).build();
 
             Post p3 = Post.builder().body("Post Body 3")
-            		.datePosted(LocalDate.now().minusDays(1))
+            		.datePosted(LocalDateTime.now().minusDays(1))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10001).get()).build();
 
             Post p4 = Post.builder().body("Post Body 4")
-            		.datePosted(LocalDate.now().minusDays(1))
+            		.datePosted(LocalDateTime.now().minusDays(1))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10002).get()).build();
 
             Post p5 = Post.builder().body("Post Body 5")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10002).get()).build();
 
             Post p6 = Post.builder().body("Post Body 6")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10003).get()).build();
 
             Post p7 = Post.builder().body("Post Body 7")
-            		.datePosted(LocalDate.now().minusDays(5))
+            		.datePosted(LocalDateTime.now().minusDays(5))
             		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10004).get()).build();
 
-            Post p8 = Post.builder().body("ahh, geh, luh. \r\n"
-            		+ "yan yung pambansang ibon pre.")
-            		.datePosted(LocalDate.now().minusDays(9))
-            		.imageUrl("https://media.tenor.com/SM55NxnE6_kAAAAM/lick-boy-lick.gif")
+            Post p8 = Post.builder().body("Dili nalang ako mag-talk")
+            		.datePosted(LocalDateTime.now().minusDays(9))
+            		.imageUrl("https://media.discordapp.net/attachments/902067553210335237/970647689144434738/sana-sana-twice.gif")
             		.user(userRepository.findById(10005).get()).build();
 
             Post p9= Post.builder().body("“Oo nga pala, hindi nga pala tayo”. "
             		+ "It’s the first line as the guitar lick settles in that sends an arrow straight to the heart– an honest, straightforward reminder of what you aren’t.")
-            		.datePosted(LocalDate.now().minusDays(7))
+            		.datePosted(LocalDateTime.now().minusDays(7))
             		.imageUrl("https://i.ytimg.com/vi/mV8_c6XKG34/maxresdefault.jpg")
             		.user(userRepository.findById(10006).get()).build();
 
             Post p10= Post.builder().body("LUH! Kulang ka sa lambing gago")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("bit.ly/3ZtJM4v")
             		.user(userRepository.findById(10007).get()).build();
 
             Post p11= Post.builder().body("Selfie sa sea. kAs1 Ang F3eL1n6xz Q 4 u n3vEr m0nG mA se S3e")
-            		.datePosted(LocalDate.now().minusDays(5))
+            		.datePosted(LocalDateTime.now().minusDays(5))
             		.imageUrl("bit.ly/3mdRhhC")
             		.user(userRepository.findById(10008).get()).build();
 
             Post p12= Post.builder().body("boom")
-            		.datePosted(LocalDate.now().minusDays(1))
+            		.datePosted(LocalDateTime.now().minusDays(1))
             		.imageUrl("https://i.pinimg.com/236x/d7/00/fa/d700fa0fbfd40a47d94ea1435c45d7d5.jpg")
             		.user(userRepository.findById(10009).get()).build();
 
             Post p13= Post.builder().body("Don't say you can't until you prove you can't. -Les Paul")
-            		.datePosted(LocalDate.now().minusDays(4))
+            		.datePosted(LocalDateTime.now().minusDays(4))
             		.user(userRepository.findById(10009).get()).build();
 
             Post p14= Post.builder().body("When in doubt, choose change.")
-            		.datePosted(LocalDate.now().minusDays(7))
+            		.datePosted(LocalDateTime.now().minusDays(7))
             		.user(userRepository.findById(10008).get()).build();
             
             Post p15= Post.builder().body("Give people a second change, but not third chance.")
-            		.datePosted(LocalDate.now().minusDays(3))
+            		.datePosted(LocalDateTime.now().minusDays(3))
             		.user(userRepository.findById(10005).get()).build();
             
             Post p16= Post.builder().body("Do not give up, the beginning is always the hardest.")
-            		.datePosted(LocalDate.now().minusDays(2))
+            		.datePosted(LocalDateTime.now().minusDays(2))
             		.user(userRepository.findById(10006).get()).build();
             
+            Post p17 = Post.builder().body("Congratulations!")
+					.datePosted(LocalDateTime.now().minusDays(15))
+					.imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843225931399178/Ryujin_UP.jpg?width=349&height=508")
+					.user(userRepository.findById(10005).get()).build();
+            
             List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
-            		p11, p12, p13, p14, p15, p16);
-
+            		p11, p12, p13, p14, p15, p16, p17);
+			
+          
             postRepository.saveAll(posts);
             
 	        Comment c1 = Comment.builder()

@@ -2,14 +2,9 @@ package com.ssglobal.revalida.jibe.controller;
 
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.dto.UserDTO;
@@ -66,6 +61,11 @@ public class UserController {
     @GetMapping("/profiles/random/{count}/{userID}")
     public ResponseEntity<List<UserResponseDTO>> getRandomUsers(@PathVariable Integer count, @PathVariable Integer userID){
         return ResponseEntity.ok().body(userService.getRandomUsers(count, userID));
+    }
+
+    @PostMapping("/profiles/{userID}/changes/confirm")
+    public ResponseEntity<Boolean> confirmChanges(@PathVariable Integer userID,@RequestBody RegisterRequestDTO request) {
+        return ResponseEntity.ok().body(userService.confirmChanges(userID, request));
     }
 
 }

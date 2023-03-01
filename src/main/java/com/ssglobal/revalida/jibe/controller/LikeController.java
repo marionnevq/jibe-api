@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.controller;
 
+import com.ssglobal.revalida.jibe.dto.CheckLikeDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,10 +39,22 @@ public class LikeController {
     public ResponseEntity<LikesDTO> selectPostLikes(@PathVariable Integer postID) {
         return ResponseEntity.ok().body(likesService.getPostLikes(postID));
     }
-	
-	@DeleteMapping("/likes/unlike/{reactionID}")
+	@GetMapping("/likes/{postID}/{userID}")
+	public ResponseEntity<LikesDTO> selectPostLikes(@PathVariable Integer postID,@PathVariable Integer userID) {
+		CheckLikeDTO request =  CheckLikeDTO.builder()
+				.postId(postID)
+				.userId(userID)
+				.build();
+		return ResponseEntity.ok().body(likesService.getLike(request));
+	}
+	@DeleteMapping("/likes/{reactionID}")
 	public ResponseEntity<Void> deleteLike(@PathVariable final Integer reactionID){
 		likesService.deleteLike(reactionID);
 		return ResponseEntity.noContent().build();
+	}
+
+	@PostMapping("/likes/exist")
+	public ResponseEntity<Boolean> checkLike(@RequestBody CheckLikeDTO request) {
+		return ResponseEntity.ok().body(likesService.checkLike(request));
 	}
 }
