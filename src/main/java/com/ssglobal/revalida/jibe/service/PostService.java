@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.ssglobal.revalida.jibe.repository.*;
@@ -37,7 +38,7 @@ public class PostService {
                 .body(request.getBody())
                 .imageUrl(request.getImageUrl())
                 .user(user.get())
-                .datePosted(request.getDatePosted())
+                .datePosted(LocalDateTime.now())
                 .build();
 
 

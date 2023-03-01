@@ -15,4 +15,6 @@ public class NotificationDTO {
 
     private String field;
 
+    private String url;
+
 }

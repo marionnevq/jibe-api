@@ -2,6 +2,9 @@ package com.ssglobal.revalida.jibe.service;
 
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.dto.UserDTO;
+import com.ssglobal.revalida.jibe.model.Notification;
+import com.ssglobal.revalida.jibe.repository.NotificationRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,7 @@ public class FollowService {
     private final UserRepository userRepository;
     private final FollowRepository followRepository;
     private final ModelMapper modelMapper;
+    private final NotificationRepository notificationRepository;
 
     public FollowDTO createFollow(FollowDTO request) {
         var follower = userRepository.findById(request.getFollowerID());
@@ -33,30 +37,35 @@ public class FollowService {
                 .followee(followee.get())
                 .build();
 
+        var notif = Notification.builder()
+                .userID(followee.get().getId())
+                .field(String.format("%s followed you",follower.get().getUsername()))
+                .url(String.format("/profile/visit/%s",follower.get().getUsername()))
+                .build();
+        notificationRepository.save(notif);
         return modelMapper.map(followRepository.save(follow), FollowDTO.class);
     }
 
-    public List<FollowDTO> getFollows(String username) {
-        var user = userRepository.findByUsername(username);
+    public List<UserDTO> getFollows(String username) {
+//        var user = userRepository.findByUsername(username);
+        var users = userRepository.findByFollows_Follower_Username(username);
 
-        if(user.isEmpty()) {
-            throw new RuntimeException("user not found");
-        }
 
-        var follows = followRepository.findByFollower_Username(username);
 
-        return follows.stream().map((follow) -> { return modelMapper.map(follow, FollowDTO.class);}).toList();
+        return users.stream().map((user) -> {
+            return modelMapper.map(user, UserDTO.class);
+        }).toList();
     }
 
     public FollowDTO deleteFollow(FollowDTO request) {
-        var following = followRepository.findByFollower_IdOrderByFollower_FirstnameDesc(request.getFollowerID());
-        var follow = followRepository.findByFollowID(request.getFollowID());
+        var follow = followRepository.findByFollower_IdAndFollowee_Username(request.getFollowerID(), request.getFolloweeUsername());
+
 
         if(follow.isEmpty()) {
             throw new RuntimeException("follow does not exist");
         }
 
-        followRepository.deleteById(follow.get().getFollowID());
+        followRepository.delete(follow.get());
 
         return modelMapper.map(follow.get(),FollowDTO.class);
     }

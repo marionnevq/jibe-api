@@ -3,6 +3,8 @@ package com.ssglobal.revalida.jibe.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.model.Notification;
+import com.ssglobal.revalida.jibe.repository.NotificationRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ public class CommentService {
 
 	private final ModelMapper modelMapper;
 	private final JwtService jwtService;
+	private final NotificationRepository notificationRepository;
 
 	public CommentDTO createComment(CommentDTO request, Integer id) {
 		var user = userRepository.findById(request.getUserID());
@@ -39,6 +42,15 @@ public class CommentService {
 				.media(request.getMedia()).dateCommented(LocalDate.now()).build();
 
 		var saved = commentRepository.save(comment);
+		if(user.get().getId() != post.get().getUser().getId()) {
+			var notif = Notification.builder()
+					.userID(post.get().getUser().getId())
+					.field(String.format("%s commented on your post", user.get().getUsername()))
+					.url(String.format("/posts/%d",post.get().getPostID()))
+					.build();
+			notificationRepository.save(notif);
+		}
+
 
 		return modelMapper.map(saved, CommentDTO.class);
 //        return CommentDTO.builder()

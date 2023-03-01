@@ -1,6 +1,7 @@
 package com.ssglobal.revalida.jibe.controller;
 
 import com.ssglobal.revalida.jibe.dto.FollowDTO;
+import com.ssglobal.revalida.jibe.dto.UserDTO;
 import com.ssglobal.revalida.jibe.security.JwtService;
 import com.ssglobal.revalida.jibe.service.FollowService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class FollowController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<List<FollowDTO>> selectFollows(@PathVariable String username) {
+    public ResponseEntity<List<UserDTO>> selectFollows(@PathVariable String username) {
         return ResponseEntity.ok().body(followService.getFollows(username));
     }
 
