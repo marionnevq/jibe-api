@@ -35,7 +35,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/profiles/{searchQuery}")
+    @GetMapping("/profiles/{searchQuery}/search")
     public ResponseEntity<List<UserResponseDTO>> searchUsersByUsername(@PathVariable String searchQuery) {
         return ResponseEntity.ok(userService.findUsersByUsername(String.format("%%%s%%",searchQuery)));
     }
