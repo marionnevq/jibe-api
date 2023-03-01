@@ -60,4 +60,20 @@ public class FollowService {
 
         return modelMapper.map(follow.get(),FollowDTO.class);
     }
+
+    public Boolean checkFollowing(String email, String otherUsername) {
+        var user = userRepository.findByEmail(email)
+                .or(() -> {return userRepository.findByUsername(email);});
+
+        var otherUser = userRepository.findByUsername(otherUsername);
+        if (user.isEmpty() || otherUser.isEmpty()){
+            throw new RuntimeException("user not found");
+        }
+        var foundOtherUser = otherUser.get();
+        var foundUser = user.get();
+
+        return followRepository.existsByFollowerAndFollowee(foundUser,foundOtherUser);
+
+
+    }
 }

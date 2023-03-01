@@ -2,14 +2,12 @@ package com.ssglobal.revalida.jibe.service;
 
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.repository.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.ssglobal.revalida.jibe.dto.PostDTO;
 import com.ssglobal.revalida.jibe.model.Post;
-import com.ssglobal.revalida.jibe.repository.FollowRepository;
-import com.ssglobal.revalida.jibe.repository.PostRepository;
-import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;
 import com.ssglobal.revalida.jibe.util.NotFoundException;
 
@@ -24,6 +22,8 @@ public class PostService {
     private final UserRepository userRepository;
 	private final JwtService jwtService;
     private final FollowRepository followRepository;
+    private final LikesRepository likesRepository;
+    private final CommentRepository commentRepository;
 
 
     public PostDTO createPost(PostDTO request) {
@@ -57,15 +57,14 @@ public class PostService {
     public List<PostDTO> getAllPosts() {
 
         var posts = postRepository.findByPostIDNotNullOrderByDatePostedDesc().stream().map(post -> {
-            return modelMapper.map(post, PostDTO.class);
-//            return PostDTO.builder()
-//                    .postID(post.getPostID())
-//                    .body(post.getBody())
-//                    .datePosted(post.getDatePosted())
-//                    .userID(post.getUser().getId())
-//                    .username(post.getUser().getUsername())
-//                    .imageUrl(post.getImageUrl())
-//                    .build();
+            Integer likesCount = Math.toIntExact(likesRepository.countByPostID(post.getPostID()));
+            Integer commentsCount = Math.toIntExact(commentRepository.countByPost_PostID(post.getPostID()));
+
+            PostDTO dto = modelMapper.map(post, PostDTO.class);
+            dto.setNumLikes(likesCount);
+            dto.setNumComments(commentsCount);
+            return dto;
+
         }).toList();
 
 
@@ -100,9 +99,17 @@ public class PostService {
 
 
     public PostDTO getPostById(Integer id) {
-        var post = postRepository.findById(id);
+        final Post post = postRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
 
-        return modelMapper.map(post, PostDTO.class);
+
+        Integer likesCount = Math.toIntExact(likesRepository.countByPostID(post.getPostID()));
+        Integer commentsCount = Math.toIntExact(commentRepository.countByPost_PostID(post.getPostID()));
+
+        PostDTO dto = modelMapper.map(post, PostDTO.class);
+        dto.setNumLikes(likesCount);
+        dto.setNumComments(commentsCount);
+        return dto;
 //        return PostDTO.builder()
 //                .postID(post.get().getPostID())
 //                .body(post.get().getBody())
@@ -137,15 +144,13 @@ public class PostService {
 
     public List<PostDTO> getPostsByUser(String username) {
         var posts = postRepository.findByUser_UsernameOrderByDatePostedDesc(username).stream().map(post -> {
-            return modelMapper.map(post, PostDTO.class);
-//            return PostDTO.builder()
-//                    .postID(post.getPostID())
-//                    .body(post.getBody())
-//                    .datePosted(post.getDatePosted())
-//                    .userID(post.getUser().getId())
-//                    .username(post.getUser().getUsername())
-//                    .imageUrl(post.getImageUrl())
-//                    .build();
+            Integer likesCount = Math.toIntExact(likesRepository.countByPostID(post.getPostID()));
+            Integer commentsCount = Math.toIntExact(commentRepository.countByPost_PostID(post.getPostID()));
+
+            PostDTO dto = modelMapper.map(post, PostDTO.class);
+            dto.setNumLikes(likesCount);
+            dto.setNumComments(commentsCount);
+            return dto;
         }).toList();
 
 
@@ -157,6 +162,14 @@ public class PostService {
         var followingUserIds = followingUsers.stream().map(follow -> {return  follow.getFollowee().getId();}).toList();
         var posts = postRepository.findByUser_IdInOrderByDatePostedDesc(followingUserIds);
 
-        return posts.stream().map(post -> modelMapper.map(post,PostDTO.class)).toList();
+        return posts.stream().map(post -> {
+            Integer likesCount = Math.toIntExact(likesRepository.countByPostID(post.getPostID()));
+            Integer commentsCount = Math.toIntExact(commentRepository.countByPost_PostID(post.getPostID()));
+
+            PostDTO dto = modelMapper.map(post, PostDTO.class);
+            dto.setNumLikes(likesCount);
+            dto.setNumComments(commentsCount);
+            return dto;
+        }).toList();
     }
 }
