@@ -48,7 +48,7 @@ public class FollowService {
 
     public List<UserDTO> getFollows(String username) {
 //        var user = userRepository.findByUsername(username);
-        var users = userRepository.findByFollows_Follower_Username(username);
+        var users = userRepository.findByFollowedBys_Follower_Username(username);
 
 
 
