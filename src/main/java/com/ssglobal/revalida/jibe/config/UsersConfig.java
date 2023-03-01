@@ -221,8 +221,24 @@ public class UsersConfig {
             		.imageUrl("https://i.pinimg.com/236x/d7/00/fa/d700fa0fbfd40a47d94ea1435c45d7d5.jpg")
             		.user(userRepository.findById(10009).get()).build();
 
+            Post p13= Post.builder().body("Don't say you can't until you prove you can't. -Les Paul")
+            		.datePosted(LocalDate.now().minusDays(4))
+            		.user(userRepository.findById(10009).get()).build();
+
+            Post p14= Post.builder().body("When in doubt, choose change.")
+            		.datePosted(LocalDate.now().minusDays(7))
+            		.user(userRepository.findById(10008).get()).build();
             
-            List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+            Post p15= Post.builder().body("Give people a second change, but not third chance.")
+            		.datePosted(LocalDate.now().minusDays(3))
+            		.user(userRepository.findById(10005).get()).build();
+            
+            Post p16= Post.builder().body("Do not give up, the beginning is always the hardest.")
+            		.datePosted(LocalDate.now().minusDays(2))
+            		.user(userRepository.findById(10006).get()).build();
+            
+            List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
+            		p11, p12, p13, p14, p15, p16);
 
             postRepository.saveAll(posts);
             
@@ -314,8 +330,27 @@ public class UsersConfig {
     	    		.post(postRepository.findById(9).get())
     	    		.user(userRepository.findById(10009).get()).build();
             
+            Comment c14 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.value("Basta post ni idol like ko yan!")
+    	    		.post(postRepository.findById(14).get())
+    	    		.user(userRepository.findById(10006).get()).build();
+            
+            Comment c15 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.value("Gara ah!")
+    	    		.post(postRepository.findById(14).get())
+    	    		.user(userRepository.findById(10005).get()).build();
+            
+            Comment c16 = Comment.builder()
+    	    		.dateCommented(LocalDate.now())
+    	    		.media("https://icon-library.com/images/fb-like-icon/fb-like-icon-23.jpg")
+    	    		.value("Tama yan!")
+    	    		.post(postRepository.findById(16).get())
+    	    		.user(userRepository.findById(10007).get()).build();
+            
             List<Comment> comment = List.of(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,
-            		c11, c12, c13);
+            		c11, c12, c13, c14, c15, c16);
             commentRepository.saveAll(comment);
 
              
