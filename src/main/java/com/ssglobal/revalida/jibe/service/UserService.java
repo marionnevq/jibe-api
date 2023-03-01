@@ -56,14 +56,7 @@ public class UserService {
 
         return user.stream().map(u -> {
             return modelMapper.map(u, UserResponseDTO.class);
-//            return UserResponseDTO.builder()
-//                    .username(u.getUsername())
-//                    .email(u.getEmail())
-//                    .firstname(u.getFirstname())
-//                    .lastname(u.getLastname())
-//                    .bio(u.getBio())
-//                    .imageUrl(u.getImageUrl())
-//                    .build();
+
         }).toList();
     }
     
