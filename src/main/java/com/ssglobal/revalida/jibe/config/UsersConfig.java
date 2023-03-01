@@ -108,7 +108,7 @@ public class UsersConfig {
                     .lastname("De Guzman")
                     .username("Jimsxz")
                     .email("jimlloyddeguzman60@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("Jimlloyddg1@"))
                     .bio("Kung ayaw mong mainlove ng todo\r\n"
                     		+ "Ay huwag mo ng susubukang tingnan pa ako,\r\n"
                     		+ "dahil baka mabaliw ka ng husto!!\r\n"
