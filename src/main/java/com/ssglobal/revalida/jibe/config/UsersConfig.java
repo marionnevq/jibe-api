@@ -166,8 +166,20 @@ public class UsersConfig {
                     .role(Role.USER)
                     .build();
             
+            User u7 = User.builder()
+                    .firstname("Hailey")
+                    .lastname("Bieber")
+                    .username("ItsmeHailey")
+                    .email("selena@gmail.com")
+                    .password(passwordEncoder.encode("Adm!N2255"))
+                    .bio("I might kill my boyfriend's ... ex")
+                    .imageUrl("https://guardian.ng/wp-content/uploads/2022/04/Hailey-Bieber.jpeg")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
             List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann,
-            		u6);
+            		u6, u7);
 
             userRepository.saveAll(users);
 
@@ -456,10 +468,50 @@ public class UsersConfig {
         Follow f20 = Follow.builder()
         		.followee(userRepository.findById(10009).get())
         		.follower(userRepository.findById(10008).get()).build();
-
+        
+        Follow f21 = Follow.builder()
+        		.followee(userRepository.findById(10000).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f22 = Follow.builder()
+        		.followee(userRepository.findById(10001).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f23 = Follow.builder()
+        		.followee(userRepository.findById(10002).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f24 = Follow.builder()
+        		.followee(userRepository.findById(10003).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f25 = Follow.builder()
+        		.followee(userRepository.findById(10004).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f26 = Follow.builder()
+        		.followee(userRepository.findById(10005).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f27 = Follow.builder()
+        		.followee(userRepository.findById(10006).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f28 = Follow.builder()
+        		.followee(userRepository.findById(10007).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f29 = Follow.builder()
+        		.followee(userRepository.findById(10008).get())
+        		.follower(userRepository.findById(10010).get()).build();
+        
+        Follow f30 = Follow.builder()
+        		.followee(userRepository.findById(10009).get())
+        		.follower(userRepository.findById(10010).get()).build();
         
         List<Follow> follow = List.of(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12,
-        		f13, f14, f15, f16, f17, f18, f19, f20);
+        		f13, f14, f15, f16, f17, f18, f19, f20, f21, f22,
+        		f23, f24, f25, f26, f27, f28, f29, f30);
         followRepository.saveAll(follow);
       
         Likes l1 = Likes.builder()
