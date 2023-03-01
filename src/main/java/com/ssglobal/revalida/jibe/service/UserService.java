@@ -150,6 +150,7 @@ public class UserService {
     public List<UserResponseDTO> getRandomUsers(Integer count, Integer userID) {
         var accounts = userRepository.findByIdNot(userID, count);
 
+
         return accounts.stream().map((user) -> {
             return modelMapper.map(user, UserResponseDTO.class);
         }).toList();

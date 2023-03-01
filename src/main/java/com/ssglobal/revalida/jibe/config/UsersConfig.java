@@ -95,11 +95,8 @@ public class UsersConfig {
                     .username("iceald")
                     .email("christian.alday@gmail.com")
                     .password(passwordEncoder.encode("Admin2255@"))
-                    .bio("If I get takot, would you hawak me tight?\r\n"
-                    		+ "If I gawa something mali, would you make it right?\r\n"
-                    		+ "If I build an apoy, would you bantay the flame?\r\n"
-                    		+ "If I sabi I miss you, would you ramdam the same?")
-                    .imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843224329191495/Sana-Ateneo.jpg?width=363&height=508")
+                    .bio("8-time Trip to Jerusalem Champion")
+                    .imageUrl("https://media.discordapp.net/attachments/902067553210335237/1080426738984689766/dp.jpg?width=515&height=508")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();

@@ -10,6 +10,7 @@ import com.ssglobal.revalida.jibe.model.User;
 
 
 public interface FollowRepository extends JpaRepository<Follow, Integer> {
+    Optional<Follow> findByFollower_IdAndFollowee_Username(Integer id, String username);
     boolean existsByFollowerAndFollowee(User follower, User followee);
     long countByFollower(User follower);
     long countByFollowee(User followee);
