@@ -85,6 +85,9 @@ public class PostService {
     }
     
     private Post mapToEntity(final PostDTO postDTO, final Post post) {
+        if(postDTO.getImageUrl() != null) {
+            post.setImageUrl(postDTO.getImageUrl());
+        }
     	post.setBody(postDTO.getBody());
 		return post;
     }
