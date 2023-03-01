@@ -106,9 +106,9 @@ public class UsersConfig {
             User jim = User.builder()
                     .firstname("Jim Lloyd")
                     .lastname("De Guzman")
-                    .username("Jimsxz")
+                    .username("jimlloyddg")
                     .email("jimlloyddeguzman60@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("Jimlloyddg1@"))
                     .bio("Kung ayaw mong mainlove ng todo\r\n"
                     		+ "Ay huwag mo ng susubukang tingnan pa ako,\r\n"
                     		+ "dahil baka mabaliw ka ng husto!!\r\n"
@@ -136,7 +136,7 @@ public class UsersConfig {
                     .lastname("Fagara")
                     .username("Nikki143")
                     .email("krishnanicolefagara@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("@dm1n2255"))
                     .bio("“In a relationship”\r\n"              		
                     		+ "Charr. Kinabahan yung may gusto sakin")
                     .imageUrl("https://media.licdn.com/dms/image/C5603AQHc3Va8eRsfiw/profile-displayphoto-shrink_800_800/0/1662706590359?e=2147483647&v=beta&t=-ajyOeGWp0LzdE36Q6LSzA7U1oYNUFdj6FAeXmpKeEw")
@@ -149,7 +149,7 @@ public class UsersConfig {
                     .lastname("Oliveros")
                     .username("jayannisdname")
                     .email("jayann20oliveros@gmail.com")
-                    .password(passwordEncoder.encode("admin2255"))
+                    .password(passwordEncoder.encode("2255Adm!n"))
                     .bio("Kahit anong suot mo, mas bagay parin ako sayo.")
                     .imageUrl("https://dk2dv4ezy246u.cloudfront.net/widgets/sShYLWUqt40_large.jpg")
                     .firstTimeLogin(false)

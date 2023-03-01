@@ -36,9 +36,8 @@ public class UserController {
 
 
     @GetMapping("/profiles")
-    public ResponseEntity<List<UserResponseDTO>> searchUsersByUsername(@RequestBody String searchQuery) {
+    public ResponseEntity<List<UserResponseDTO>> searchUsersByUsername(@RequestParam String searchQuery) {
         return ResponseEntity.ok(userService.findUsersByUsername(String.format("%%%s%%",searchQuery)));
-
     }
 
     @GetMapping("/profiles/{username}")

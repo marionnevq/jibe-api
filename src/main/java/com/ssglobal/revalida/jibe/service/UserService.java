@@ -5,18 +5,16 @@ package com.ssglobal.revalida.jibe.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
-import com.ssglobal.revalida.jibe.repository.FollowRepository;
-import com.ssglobal.revalida.jibe.repository.PostRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
 import com.ssglobal.revalida.jibe.dto.UserDTO;
 import com.ssglobal.revalida.jibe.dto.UserResponseDTO;
 import com.ssglobal.revalida.jibe.model.User;
+import com.ssglobal.revalida.jibe.repository.FollowRepository;
+import com.ssglobal.revalida.jibe.repository.PostRepository;
 import com.ssglobal.revalida.jibe.repository.UserRepository;
 import com.ssglobal.revalida.jibe.security.JwtService;
 import com.ssglobal.revalida.jibe.util.NotFoundException;
