@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.service;
 import com.ssglobal.revalida.jibe.dto.CheckLikeDTO;
+import com.ssglobal.revalida.jibe.model.Notification;
 import com.ssglobal.revalida.jibe.repository.PostRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,8 @@ public class LikesService {
 				.commentID(commentID)
 				.userID(user.getId())
 				.build();
+
+
 
 		var saved = likesRepository.save(like);
 		return modelMapper.map(saved, LikesDTO.class);

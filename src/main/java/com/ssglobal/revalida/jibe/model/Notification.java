@@ -32,4 +32,7 @@ public class Notification {
 	@Column(nullable = false)
 	private String field;
 
+	@Column(nullable = false)
+	private String url;
+
 }
