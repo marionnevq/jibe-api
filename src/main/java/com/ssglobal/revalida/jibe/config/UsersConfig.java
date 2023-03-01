@@ -113,7 +113,7 @@ public class UsersConfig {
                     		+ "Ay huwag mo ng susubukang tingnan pa ako,\r\n"
                     		+ "dahil baka mabaliw ka ng husto!!\r\n"
                     		+ "")
-                    .imageUrl("https://www.facebook.com/photo/?fbid=5844522632303797&set=a.111122295643888&__tn__=%3C")
+                    .imageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Funny_Image_of_Dog_with_open_teeth.png/684px-Funny_Image_of_Dog_with_open_teeth.png?20220323025258")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -126,7 +126,7 @@ public class UsersConfig {
                     .password(passwordEncoder.encode("Admin2255!"))
                     .bio("Tao ka ba?..............\r\n"
                     		+ "naninigurado lang. boom")
-                    .imageUrl("https://www.facebook.com/photo/?fbid=5608656919168662&set=a.147189011982174&__tn__=%3C")
+                    .imageUrl("https://media.licdn.com/dms/image/C5603AQHZUAwOgcDPmw/profile-displayphoto-shrink_800_800/0/1643114548266?e=2147483647&v=beta&t=1a_IhmVEtppBkrFu5fzY7ZJ_DVFJT5z7YlhWgmFGJvc")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -139,7 +139,7 @@ public class UsersConfig {
                     .password(passwordEncoder.encode("admin2255"))
                     .bio("“In a relationship”\r\n"              		
                     		+ "Charr. Kinabahan yung may gusto sakin")
-                    .imageUrl("https://www.facebook.com/photo/?fbid=5143306602456035&set=a.112784658841613")
+                    .imageUrl("https://media.licdn.com/dms/image/C5603AQHc3Va8eRsfiw/profile-displayphoto-shrink_800_800/0/1662706590359?e=2147483647&v=beta&t=-ajyOeGWp0LzdE36Q6LSzA7U1oYNUFdj6FAeXmpKeEw")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
@@ -151,7 +151,7 @@ public class UsersConfig {
                     .email("jayann20oliveros@gmail.com")
                     .password(passwordEncoder.encode("admin2255"))
                     .bio("Kahit anong suot mo, mas bagay parin ako sayo.")
-                    .imageUrl("https://www.facebook.com/photo/?fbid=2249309448595490&set=a.113383658854757")
+                    .imageUrl("https://dk2dv4ezy246u.cloudfront.net/widgets/sShYLWUqt40_large.jpg")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
