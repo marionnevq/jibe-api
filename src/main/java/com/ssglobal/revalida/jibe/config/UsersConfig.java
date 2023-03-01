@@ -229,7 +229,7 @@ public class UsersConfig {
             		.imageUrl("https://i.ytimg.com/vi/mV8_c6XKG34/maxresdefault.jpg")
             		.user(userRepository.findById(10006).get()).build();
 
-            Post p10= Post.builder().body("LUH! Kulang ka sa lambing gago")
+            Post p10= Post.builder().body("LUH! Kulang ka sa lambing!")
             		.datePosted(LocalDateTime.now().minusDays(2))
             		.imageUrl("bit.ly/3ZtJM4v")
             		.user(userRepository.findById(10007).get()).build();
@@ -516,43 +516,43 @@ public class UsersConfig {
       
         Likes l1 = Likes.builder()
         		.userID(10000)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l2 = Likes.builder()
         		.userID(10001)
-        		.postID(10010).build();
+        		.postID(18).build();
         
         Likes l3 = Likes.builder()
         		.userID(10002)
-        		.postID(10010).build();
+        		.postID(2).build();
         
         Likes l4 = Likes.builder()
         		.userID(10003)
-        		.postID(10010).build();
+        		.postID(2).build();
         
         Likes l5 = Likes.builder()
         		.userID(10004)
-        		.postID(10010).build();
+        		.postID(8).build();
         
         Likes l6 = Likes.builder()
         		.userID(10005)
-        		.postID(10010).build();
+        		.postID(8).build();
         
         Likes l7 = Likes.builder()
         		.userID(10006)
-        		.postID(10010).build();
+        		.postID(5).build();
         
         Likes l8 = Likes.builder()
         		.userID(10007)
-        		.postID(10010).build();
+        		.postID(5).build();
         
         Likes l9 = Likes.builder()
         		.userID(10008)
-        		.postID(10010).build();
+        		.postID(2).build();
         
         Likes l10 = Likes.builder()
         		.userID(10009)
-        		.postID(10010).build();
+        		.postID(2).build();
        
         List<Likes> likes = List.of(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
         likesRepository.saveAll(likes);
