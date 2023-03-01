@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
+    List<User> findByFollowedBys_Follower_Username(String username);
     List<User> findByFollows_Follower_Username(String username);
     @Query("select u from User u inner join u.followedBys followedBys where u.id <> ?1 and followedBys.follower.id <> ?1 order by random() limit ?2")
     List<User> findByIdNotAndFollowedBys_Follower_IdNot(Integer id,Integer count);
