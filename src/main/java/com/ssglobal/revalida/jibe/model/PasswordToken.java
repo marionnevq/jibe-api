@@ -1,0 +1,27 @@
+package com.ssglobal.revalida.jibe.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "_passwordtoken")
+public class PasswordToken {
+    @Id
+    @Column(nullable = false, updatable = false)
+    @SequenceGenerator(name = "primary_sequence", sequenceName = "primary_sequence", allocationSize = 1, initialValue = 10000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
+    private Integer id;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String token;
+}

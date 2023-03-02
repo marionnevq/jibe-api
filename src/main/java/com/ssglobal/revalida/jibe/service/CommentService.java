@@ -69,12 +69,12 @@ public class CommentService {
 		return comments.stream().map(comment -> modelMapper.map(comment, CommentDTO.class)).toList();
 	}
 
-	public CommentDTO removeCommentById(Integer postId, Integer commentId) {
-		var post = postRepository.findById(postId);
+	public CommentDTO removeCommentById( Integer commentId) {
+
 
 		var comment = commentRepository.findById(commentId);
 
-		if (post.isEmpty() || comment.isEmpty()) {
+		if (comment.isEmpty()) {
 			throw new RuntimeException("invalid delete");
 		}
 
@@ -102,9 +102,9 @@ public class CommentService {
 			comment.setMedia(commentDTO.getMedia());
 		}
 
-		if (commentDTO.getDateCommented() != null) {
-			comment.setDateCommented(commentDTO.getDateCommented());
-		}
+
+			comment.setDateCommented(LocalDateTime.now());
+
 		
 		commentRepository.save(comment);
 		return "Successfully Updated.";

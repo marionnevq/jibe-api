@@ -78,6 +78,8 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 255)
     private String imageUrl;
 
+    @Column(nullable = true)
+    private String birthday;
     @Column(nullable = false)
     private Boolean firstTimeLogin;
 

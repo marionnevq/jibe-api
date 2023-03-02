@@ -36,6 +36,8 @@ public class UserDTO {
     
     private Integer age;
 
+    private String birthday;
+
 
     @JsonIgnore
     private String password;

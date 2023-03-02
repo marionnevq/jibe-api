@@ -5,6 +5,8 @@ package com.ssglobal.revalida.jibe.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ssglobal.revalida.jibe.dto.PasswordDTO;
+import com.ssglobal.revalida.jibe.repository.PasswordTokenRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final PostRepository postRepository;
     private final FollowRepository followRepository;
+    private final PasswordTokenRepository passwordTokenRepository;
 
     public UserDTO getCurrentUser(String email) {
         var user = userRepository.findByEmail(email)
@@ -169,5 +172,29 @@ public class UserService {
                 .orElseThrow(NotFoundException::new);
 
         return passwordEncoder.matches(request.getPassword(), user.getPassword());
+    }
+
+    public Boolean updatePassword(PasswordDTO request, String token) {
+        final String jwt = token.substring(7);
+
+        var passwordToken =  passwordTokenRepository.findByToken(jwt);
+        if(passwordToken.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        String username = jwtService.extractUsername(jwt);
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(NotFoundException::new);
+
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        passwordTokenRepository.delete(passwordToken.get());
+
+        userRepository.save(user);
+        return true;
+
+
+
     }
 }
