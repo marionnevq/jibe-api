@@ -385,19 +385,18 @@ public class UsersConfig {
             		.user(userRepository.findById(10006).get()).build();
             
             Post p17 = Post.builder().body("Congratulations!")
-					.datePosted(LocalDateTime.now().minusDays(15))
-					.imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843225931399178/Ryujin_UP.jpg?width=349&height=508")
-					.user(userRepository.findById(10005).get()).build();
-            
+                .datePosted(LocalDateTime.now().minusDays(15))
+                .imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843225931399178/Ryujin_UP.jpg?width=349&height=508")
+                .user(userRepository.findById(10005).get()).build();
+
             Post p18 = Post.builder().body("Jealousy... is a mental cancer.")
-					.datePosted(LocalDateTime.now().minusDays(10))
-					.imageUrl("https://www.rollingstone.com/wp-content/uploads/2023/02/selena-gomez-album-teaser.jpg")
-					.user(userRepository.findById(10010).get()).build();
+                .datePosted(LocalDateTime.now().minusDays(10))
+                .imageUrl("https://www.rollingstone.com/wp-content/uploads/2023/02/selena-gomez-album-teaser.jpg")
+                .user(userRepository.findById(10010).get()).build();
             
             List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
             		p11, p12, p13, p14, p15, p16, p17, p18);
-			
-          
+		      
             postRepository.saveAll(posts);
             
 	        Comment c1 = Comment.builder()
@@ -683,5 +682,4 @@ public class UsersConfig {
         
         };
     }
-
 }

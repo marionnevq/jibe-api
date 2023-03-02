@@ -1,6 +1,7 @@
 package com.ssglobal.revalida.jibe.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -37,7 +38,7 @@ public class Comment {
 	private String value;
 
 	@Column(nullable = false)
-	private LocalDate dateCommented;
+	private LocalDateTime dateCommented;
 
 	private String media;
 

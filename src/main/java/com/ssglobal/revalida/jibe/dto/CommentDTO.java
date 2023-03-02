@@ -1,6 +1,7 @@
 package com.ssglobal.revalida.jibe.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -29,6 +30,6 @@ public class CommentDTO {
 	private Integer postID;
 
 	@NotNull
-	private LocalDate dateCommented;
+	private LocalDateTime dateCommented;
 
 }

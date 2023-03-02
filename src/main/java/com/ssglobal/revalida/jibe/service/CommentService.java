@@ -1,6 +1,7 @@
 package com.ssglobal.revalida.jibe.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.ssglobal.revalida.jibe.model.Notification;
@@ -39,7 +40,7 @@ public class CommentService {
 		}
 
 		var comment = Comment.builder().user(user.get()).post(post.get()).value(request.getValue())
-				.media(request.getMedia()).dateCommented(LocalDate.now()).build();
+				.media(request.getMedia()).dateCommented(LocalDateTime.now()).build();
 
 		var saved = commentRepository.save(comment);
 		if(user.get().getId() != post.get().getUser().getId()) {
