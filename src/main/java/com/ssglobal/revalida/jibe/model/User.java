@@ -1,5 +1,6 @@
 package com.ssglobal.revalida.jibe.model;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -72,6 +73,8 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 255)
     private String imageUrl;
 
+    @Column(nullable = true)
+    private String birthday;
     @Column(nullable = false)
     private Boolean firstTimeLogin;
 

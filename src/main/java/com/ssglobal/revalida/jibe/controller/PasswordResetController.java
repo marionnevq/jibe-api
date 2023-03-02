@@ -24,9 +24,6 @@ public class PasswordResetController {
 
 
 
-    @PutMapping("/save")
-    public ResponseEntity<Boolean> updatePassword(@RequestBody PasswordDTO request,@RequestHeader(name = "Authorization") String token) {
-        return ResponseEntity.ok().body(userService.updatePassword(request,token));
-    }
+
 
 }

@@ -11,6 +11,7 @@ public class RegisterRequestDTO {
     private String lastname;
     private String bio;
     private String username;
+    private String birthday;
     private String email;
     private String password;
     private String imageUrl;

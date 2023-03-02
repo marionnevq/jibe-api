@@ -41,4 +41,26 @@ public class PasswordService {
         passwordTokenRepository.save(tokenEntity);
         return token;
     }
+
+    public Boolean checkToken(String token) {
+        var passwordToken =  passwordTokenRepository.findByToken(token);
+        String username = jwtService.extractUsername(token);
+        var user = userRepository.findByUsername(username);
+
+
+
+        if(passwordToken.isEmpty() || user.isEmpty()) {
+            throw new RuntimeException("Invalid Link");
+        }
+
+        if(jwtService.isTokenValid(token, user.get())) {
+        return true;
+
+        } else {
+            passwordTokenRepository.delete(passwordToken.get());
+            return false;
+        }
+
+
+    }
 }

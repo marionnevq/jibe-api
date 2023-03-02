@@ -30,6 +30,8 @@ public class UserDTO {
 
     private String bio;
 
+    private String birthday;
+
 
     @JsonIgnore
     private String password;

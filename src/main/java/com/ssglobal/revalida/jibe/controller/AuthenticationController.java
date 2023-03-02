@@ -2,10 +2,12 @@ package com.ssglobal.revalida.jibe.controller;
 
 import com.ssglobal.revalida.jibe.dto.AuthenticationRequestDTO;
 
+import com.ssglobal.revalida.jibe.dto.PasswordDTO;
 import com.ssglobal.revalida.jibe.dto.RegisterRequestDTO;
 import com.ssglobal.revalida.jibe.dto.RequestPasswordDTO;
 import com.ssglobal.revalida.jibe.service.AuthenticationService;
 import com.ssglobal.revalida.jibe.service.PasswordService;
+import com.ssglobal.revalida.jibe.service.UserService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,7 @@ public class AuthenticationController {
     private final PasswordService passwordService;
 
     private final JavaMailSender mailSender;
+    private final UserService userService;
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody RegisterRequestDTO request) {
         String error = "";
@@ -44,21 +47,24 @@ public class AuthenticationController {
     public ResponseEntity<Boolean> resetPassword(@RequestBody RequestPasswordDTO request) throws MessagingException, UnsupportedEncodingException {
         String email = request.getEmail();
         String token = passwordService.getResetToken(request);
-        String resetPasswordLink = "http://localhost:3000/api/password/reset/" + token;
+        String resetPasswordLink = "http://localhost:3000/password/reset/" + token;
         sendEmail(email,resetPasswordLink);
         return ResponseEntity.ok().body(true);
     }
 
     @GetMapping("/password/reset/{token}")
     public ResponseEntity<Boolean> showResetForm(@PathVariable String token) {
-        return ResponseEntity.ok().body(true);
+
+        return ResponseEntity.ok().body(passwordService.checkToken(token));
     }
 
-
+    @PutMapping("/password/save")
+    public ResponseEntity<Object> updatePassword(@RequestBody PasswordDTO request, @RequestHeader(name = "Authorization") String token) {
+                return ResponseEntity.ok().body(userService.updatePassword(request,token));
+    }
     @PostMapping("/authenticate")
     public ResponseEntity<Object> authenticate(@RequestBody AuthenticationRequestDTO request) {
         String error = "";
-//        return ResponseEntity.ok().body(request);
         try {
             return ResponseEntity.ok(authenticationService.authenticate(request));
         } catch (Exception e) {
