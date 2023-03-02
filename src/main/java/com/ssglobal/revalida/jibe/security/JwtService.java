@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -36,6 +37,10 @@ public class JwtService {
         return generateToken(new HashMap<>(),userDetails);
     }
 
+    public String generateResetPasswordToken(UserDetails userDetails){
+        return generatePasswordToken(new HashMap<>(),userDetails);
+    }
+
     public Boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
@@ -59,7 +64,16 @@ public class JwtService {
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
-
+    public String generatePasswordToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+        return Jwts
+                .builder()
+                .setClaims(extraClaims)
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(Date.from(LocalDateTime.now().plusMinutes(5).atZone(ZoneId.systemDefault()).toInstant()))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
     private Claims extractAllClaims(String token) {
         return Jwts
                 .parserBuilder()

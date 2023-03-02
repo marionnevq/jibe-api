@@ -363,107 +363,107 @@ public class UsersConfig {
 			postRepository.saveAll(posts);
 
 			Comment c1 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://media.moddb.com/cache/images/members/5/4550/4549205/thumb_620x2000/duck.jpg")
 					.value("This is banana.")
 					.post(postRepository.findById(2).get())
 					.user(userRepository.findById(10003).get()).build();
 
 			Comment c2 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://pbs.twimg.com/profile_images/1074985128881864704/-WV56RC5_400x400.jpg")
 					.value("This is hatdog.")
 					.post(postRepository.findById(1).get())
 					.user(userRepository.findById(10001).get()).build();
 
 			Comment c3 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://pbs.twimg.com/profile_images/653700295395016708/WjGTnKGQ_400x400.png")
 					.value("Wow nice banana.")
 					.post(postRepository.findById(2).get())
 					.user(userRepository.findById(10002).get()).build();
 
 			Comment c4 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://media.tenor.com/9ModG8XWV5AAAAAd/puss-in.gif")
 					.value("Can you dm me this photo?")
 					.post(postRepository.findById(2).get())
 					.user(userRepository.findById(10004).get()).build();
 
 			Comment c5 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://media.tenor.com/eorzo18pmJoAAAAS/cringe.gif")
 					.value("Cringe")
 					.post(postRepository.findById(1).get())
 					.user(userRepository.findById(10005).get()).build();
 
 			Comment c6 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://media.tenor.com/PGVvHe1jMX8AAAAC/funny-laugh.gif")
 					.value("Benta! HAHAHAHA XD XD")
 					.post(postRepository.findById(8).get())
 					.user(userRepository.findById(10006).get()).build();
 
 			Comment c7 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://japanpowered.com/media/images/cringe-baby-picture-800x450.jpg")
 					.value("ah ok")
 					.post(postRepository.findById(8).get())
 					.user(userRepository.findById(10008).get()).build();
 
 			Comment c8 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://i.pinimg.com/736x/02/d8/c8/02d8c89ffe273e093d06036f49ed8302.jpg")
 					.value("hehe")
 					.post(postRepository.findById(8).get())
 					.user(userRepository.findById(10009).get()).build();
 
 			Comment c9 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://www.incimages.com/uploaded_files/image/1920x1080/getty_627216922_2000149920009280228_336748.jpg")
 					.value("Ayos yan!")
 					.post(postRepository.findById(8).get())
 					.user(userRepository.findById(10007).get()).build();
 
 			Comment c10 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.value("Cheezzzyyy")
 					.post(postRepository.findById(9).get())
 					.user(userRepository.findById(10005).get()).build();
 
 			Comment c11 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.value("Ayos yan idol!")
 					.post(postRepository.findById(9).get())
 					.user(userRepository.findById(10007).get()).build();
 
 			Comment c12 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.value("Sadboi")
 					.post(postRepository.findById(9).get())
 					.user(userRepository.findById(10008).get()).build();
 
 			Comment c13 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://media2.giphy.com/media/6pJNYBYSMFod2/giphy.gif")
 					.value("HAHAHAHA")
 					.post(postRepository.findById(9).get())
 					.user(userRepository.findById(10009).get()).build();
 
 			Comment c14 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.value("Basta post ni idol like ko yan!")
 					.post(postRepository.findById(14).get())
 					.user(userRepository.findById(10006).get()).build();
 
 			Comment c15 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.value("Gara ah!")
 					.post(postRepository.findById(14).get())
 					.user(userRepository.findById(10005).get()).build();
 
 			Comment c16 = Comment.builder()
-					.dateCommented(LocalDate.now())
+					.dateCommented(LocalDateTime.now())
 					.media("https://icon-library.com/images/fb-like-icon/fb-like-icon-23.jpg")
 					.value("Tama yan!")
 					.post(postRepository.findById(16).get())
