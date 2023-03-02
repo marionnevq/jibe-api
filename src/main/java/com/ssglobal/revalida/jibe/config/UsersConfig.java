@@ -250,45 +250,58 @@ public class UsersConfig {
                     .role(Role.USER)
                     .build();
             
+            User u14 = User.builder()
+                    .firstname("Enrique")
+                    .lastname("Gil")
+                    .username("enrique")
+                    .email("egil@gmail.com")
+                    .password(passwordEncoder.encode("Enr!que2255"))
+                    .bio("Wait For Me.")
+                    .imageUrl("https://i.mydramalist.com/RlzvR_5f.jpg")
+                    .firstTimeLogin(false)
+                    .role(Role.USER)
+                    .build();
+            
             
             List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann,
-            		u6, u7, u8, u9, u10, u11, u12, u13);
+            		u6, u7, u8, u9, u10, u11, u12, u13, u14);
 
             userRepository.saveAll(users);
 
 
-            Post p1 = Post.builder().body("Post Body 1")
+            Post p1 = Post.builder().body("The way to get started is to quit talking and begin doing. -Walt Disney")
             		.datePosted(LocalDateTime.now())
             		.imageUrl("https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg?w=400&h=300&c=crop")
             		.user(userRepository.findById(10000).get()).build();
 
-            Post p2 = Post.builder().body("Post Body 2")
+            Post p2 = Post.builder().body("FOR SALE: Kambing, P6,000 only! Meet up Biringan City")
             		.datePosted(LocalDateTime.now())
+            		.imageUrl("https://m.media-amazon.com/images/I/91ave06oxzL.png")
             		.user(userRepository.findById(10000).get()).build();
 
-            Post p3 = Post.builder().body("Post Body 3")
+            Post p3 = Post.builder().body("FOR SALE: iPhone 14 pro max, P9,000 only! With issue: Tumatawag ang may ari.")
             		.datePosted(LocalDateTime.now().minusDays(1))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("https://www.digitaltrends.com/wp-content/uploads/2022/09/iPhone-14-Pro-Back-Purple-Hand.jpg?p=1"  )
             		.user(userRepository.findById(10001).get()).build();
 
-            Post p4 = Post.builder().body("Post Body 4")
+            Post p4 = Post.builder().body("FOR SALE: Banig upto 10 person. P200 only! Issue: Wala ng hihiga lahat nakatayo.")
             		.datePosted(LocalDateTime.now().minusDays(1))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("https://lh3.googleusercontent.com/-VlkyOaBwZNg/UmNl5Pdn3GI/AAAAAAAAGcg/ONDrlxQih2A/s800/banig.jpg")
             		.user(userRepository.findById(10002).get()).build();
 
-            Post p5 = Post.builder().body("Post Body 5")
+            Post p5 = Post.builder().body("FOR SALE: Plantsa, P150 only! Issue: handle yung umiinit.")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("http://1.bp.blogspot.com/-13ILsS7vr3U/Ub2OJl0AMMI/AAAAAAAAIrU/lONVIMHD6iY/s1600/Plantsa1.jpg")
             		.user(userRepository.findById(10002).get()).build();
 
-            Post p6 = Post.builder().body("Post Body 6")
+            Post p6 = Post.builder().body("FOR SALE: 2nd Hand Kaha de yero SUPER SECURED!, P180 only! Issue: Di ko mabuksan")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("https://media.karousell.com/media/photos/products/2021/4/11/antique_kaha_de_yero_1618106859_89493c42_progressive.jpg")
             		.user(userRepository.findById(10003).get()).build();
 
-            Post p7 = Post.builder().body("Post Body 7")
+            Post p7 = Post.builder().body("Selena recently posted a now-deleted TikTok video admitting that she laminated her eyebrows \"too much.\" After this, Kylie posted a video on her Instagram Story showing off her eyebrows with the caption “this was an accident?????”.")
             		.datePosted(LocalDateTime.now().minusDays(5))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("https://media.distractify.com/brand-img/n67BDlYnc/2160x1130/selena-gomez-and-kylie-jenner-1677364172352.jpg")
             		.user(userRepository.findById(10004).get()).build();
 
             Post p8 = Post.builder().body("Dili nalang ako mag-talk")
