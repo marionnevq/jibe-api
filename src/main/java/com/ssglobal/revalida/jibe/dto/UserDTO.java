@@ -1,5 +1,7 @@
 package com.ssglobal.revalida.jibe.dto;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +31,10 @@ public class UserDTO {
     
 
     private String bio;
+    
+    private LocalDate birthday;
+    
+    private Integer age;
 
     private String birthday;
 
