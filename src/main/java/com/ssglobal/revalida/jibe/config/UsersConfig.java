@@ -355,12 +355,12 @@ public class UsersConfig {
 
             Post p10= Post.builder().body("LUH! Kulang ka sa lambing hehehe")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("bit.ly/3ZtJM4v")
+            		.imageUrl("https://images.theconversation.com/files/156529/original/image-20170213-23331-vsydk4.jpg?ixlib=rb-1.1.0&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip")
             		.user(userRepository.findById(10007).get()).build();
 
             Post p11= Post.builder().body("Selfie sa sea. kAs1 Ang F3eL1n6xz Q 4 u n3vEr m0nG mA se S3e")
             		.datePosted(LocalDateTime.now().minusDays(5))
-            		.imageUrl("bit.ly/3mdRhhC")
+            		.imageUrl("https://lumiere-a.akamaihd.net/v1/images/pp_moana_herobanner_mobile_20530_75515cd9.jpeg?region=0,0,640,480")
             		.user(userRepository.findById(10008).get()).build();
 
             Post p12= Post.builder().body("boom")
