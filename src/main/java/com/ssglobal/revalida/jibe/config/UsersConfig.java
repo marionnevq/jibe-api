@@ -286,7 +286,7 @@ public class UsersConfig {
 
 			Post p4 = Post.builder().body("FOR SALE: Banig upto 10 person. P200 only! Issue: Wala ng hihiga lahat nakatayo.")
 					.datePosted(LocalDateTime.now().minusDays(1))
-					.imageUrl("https://lh3.googleusercontent.com/-VlkyOaBwZNg/UmNl5Pdn3GI/AAAAAAAAGcg/ONDrlxQih2A/s800/banig.jpg")
+					.imageUrl("https://cdn.shopify.com/s/files/1/1406/1068/collections/Banig_Rolls-resized.jpg?v=1518505365")
 					.user(userRepository.findById(10002).get()).build();
 
 			Post p5 = Post.builder().body("FOR SALE: Plantsa, P150 only! Issue: handle yung umiinit.")
