@@ -195,27 +195,25 @@ public class UsersConfig {
 
             Post p3 = Post.builder().body("Post Body 3")
             		.datePosted(LocalDateTime.now().minusDays(1))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("http://picsum.photos/200/200")
             		.user(userRepository.findById(10001).get()).build();
 
             Post p4 = Post.builder().body("Post Body 4")
             		.datePosted(LocalDateTime.now().minusDays(1))
-            		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10002).get()).build();
 
             Post p5 = Post.builder().body("Post Body 5")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("http://picsum.photos/200/200")
             		.user(userRepository.findById(10002).get()).build();
 
             Post p6 = Post.builder().body("Post Body 6")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("picsum.photos/200")
+            		.imageUrl("http://picsum.photos/200/200")
             		.user(userRepository.findById(10003).get()).build();
 
             Post p7 = Post.builder().body("Post Body 7")
             		.datePosted(LocalDateTime.now().minusDays(5))
-            		.imageUrl("picsum.photos/200")
             		.user(userRepository.findById(10004).get()).build();
 
             Post p8 = Post.builder().body("Dili nalang ako mag-talk")
@@ -231,12 +229,12 @@ public class UsersConfig {
 
             Post p10= Post.builder().body("LUH! Kulang ka sa lambing!")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("bit.ly/3ZtJM4v")
+            		.imageUrl("https://www.hollywoodreporter.com/wp-content/uploads/2017/08/shutterstock_297886754_-_h_2017.jpg?w=1024")
             		.user(userRepository.findById(10007).get()).build();
 
             Post p11= Post.builder().body("Selfie sa sea. kAs1 Ang F3eL1n6xz Q 4 u n3vEr m0nG mA se S3e")
             		.datePosted(LocalDateTime.now().minusDays(5))
-            		.imageUrl("bit.ly/3mdRhhC")
+            		.imageUrl("https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg")
             		.user(userRepository.findById(10008).get()).build();
 
             Post p12= Post.builder().body("boom")
