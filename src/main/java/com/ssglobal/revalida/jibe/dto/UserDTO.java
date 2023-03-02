@@ -32,8 +32,7 @@ public class UserDTO {
 
     private String bio;
     
-    private LocalDate birthday;
-    
+
     private Integer age;
 
     private String birthday;
