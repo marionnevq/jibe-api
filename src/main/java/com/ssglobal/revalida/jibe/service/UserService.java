@@ -77,7 +77,7 @@ public class UserService {
 
         }).toList();
     }
-    
+
     public UserResponseDTO getUserByUsername(String username) {
 //        var user = userRepository.findByUsername(username);
         var user = userRepository.findByUsername(username);
@@ -106,50 +106,50 @@ public class UserService {
 //                .username(foundUser.getUsername())
 //                .build();
     }
-    
+
     public boolean update(final UserDTO userDTO, String token) {
     	final String jwt = token.substring(7);
 		String username = jwtService.extractUsername(jwt);
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(NotFoundException::new);
-		
+
 		if(userDTO.getBio() != null) {
 			user.setBio(userDTO.getBio());
 		}
-		
+
 		if(userDTO.getFirstname() != null) {
 			user.setFirstname(userDTO.getFirstname());
 		}
-				
+
 		if(userDTO.getLastname() != null) {
 			user.setLastname(userDTO.getLastname());
 		}
-		
+
 		if(userDTO.getEmail() != null) {
 			user.setEmail(userDTO.getEmail());
 		}
-		
+
 		if(userDTO.getImageUrl() != null) {
 			user.setImageUrl(userDTO.getImageUrl());
 		}
-		
+
 		if(userDTO.getPassword() != null) {
 			user.setPassword(userDTO.getPassword());
 		}
-		
+
 		if(userDTO.getUsername() != null) {
 			user.setUsername(userDTO.getUsername());
 		}
-		
+
 		if(userDTO.getBirthday() != null) {
 			user.setBirthday(userDTO.getBirthday());
 		}
-		
+
 
         if(userDTO.getFirstTimeLogin() != null) {
             user.setFirstTimeLogin(userDTO.getFirstTimeLogin());
         }
-		
+
 		userRepository.save(user);
 
 		return true;

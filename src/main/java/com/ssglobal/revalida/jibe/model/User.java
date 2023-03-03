@@ -62,12 +62,12 @@ public class User implements UserDetails {
 
     @Column(nullable = false, length = 100)
     private String email;
-    
+
     @Column(nullable = false, length = 255)
     private String bio;
 
 
-	
+
 
 
     @Column(nullable = false, length = 100)
@@ -95,7 +95,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "follower", cascade = CascadeType.REMOVE)
     private Set<Follow> follows;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "followee", cascade = CascadeType.REMOVE)
     private Set<Follow> followedBys;

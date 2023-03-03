@@ -93,7 +93,7 @@ public class UsersConfig {
                     .firstTimeLogin(true)
                     .role(Role.USER)
                     .build();
-            
+
             User ice = User.builder()
                     .firstname("Christian")
                     .lastname("Alday")
@@ -106,7 +106,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User jim = User.builder()
                     .firstname("Jim Lloyd")
                     .lastname("De Guzman")
@@ -122,7 +122,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User mars = User.builder()
                     .firstname("Marionne")
                     .lastname("Quintana")
@@ -136,21 +136,21 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User nikki = User.builder()
                     .firstname("Krishna Nicole")
                     .lastname("Fagara")
                     .username("Nikki143")
                     .email("krishnanicolefagara@gmail.com")
                     .password(passwordEncoder.encode("@dm1n2255"))
-                    .bio("“In a relationship”\r\n"              		
+                    .bio("“In a relationship”\r\n"
                     		+ "Charr. Kinabahan yung may gusto sakin")
                     .birthday(LocalDate.now().minusDays(8320).toString())
                     .imageUrl("https://media.licdn.com/dms/image/C5603AQHc3Va8eRsfiw/profile-displayphoto-shrink_800_800/0/1662706590359?e=2147483647&v=beta&t=-ajyOeGWp0LzdE36Q6LSzA7U1oYNUFdj6FAeXmpKeEw")
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User jayann = User.builder()
                     .firstname("Jay-Ann")
                     .lastname("Oliveros")
@@ -163,7 +163,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u6 = User.builder()
                     .firstname("Selena")
                     .lastname("Gomez")
@@ -176,7 +176,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u7 = User.builder()
                     .firstname("Hailey")
                     .lastname("Bieber")
@@ -189,7 +189,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u8 = User.builder()
                     .firstname("Kylie")
                     .lastname("Jenner")
@@ -202,7 +202,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u9 = User.builder()
                     .firstname("Justin")
                     .lastname("Beiber")
@@ -215,7 +215,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u10 = User.builder()
                     .firstname("Kendall")
                     .lastname("Jenner")
@@ -228,7 +228,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u11 = User.builder()
                     .firstname("Liza")
                     .lastname("Soberano")
@@ -241,7 +241,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u12 = User.builder()
                     .firstname("Nadine")
                     .lastname("Lustre")
@@ -254,7 +254,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u13 = User.builder()
                     .firstname("James")
                     .lastname("Reid")
@@ -267,7 +267,7 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
+
             User u14 = User.builder()
                     .firstname("Enrique")
                     .lastname("Gil")
@@ -280,8 +280,8 @@ public class UsersConfig {
                     .firstTimeLogin(false)
                     .role(Role.USER)
                     .build();
-            
-            
+
+
             List<User> users =List.of(user1,user2,user3,user4,user5,ice, jim, mars, nikki, jayann,
             		u6, u7, u8, u9, u10, u11, u12, u13, u14);
 
@@ -336,12 +336,12 @@ public class UsersConfig {
 
             Post p10= Post.builder().body("LUH! Kulang ka sa lambing hehehe")
             		.datePosted(LocalDateTime.now().minusDays(2))
-            		.imageUrl("bit.ly/3ZtJM4v")
+            		.imageUrl("https://images.theconversation.com/files/156529/original/image-20170213-23331-vsydk4.jpg?ixlib=rb-1.1.0&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip")
             		.user(userRepository.findById(10007).get()).build();
 
             Post p11= Post.builder().body("Selfie sa sea. kAs1 Ang F3eL1n6xz Q 4 u n3vEr m0nG mA se S3e")
             		.datePosted(LocalDateTime.now().minusDays(5))
-            		.imageUrl("bit.ly/3mdRhhC")
+            		.imageUrl("https://lumiere-a.akamaihd.net/v1/images/pp_moana_herobanner_mobile_20530_75515cd9.jpeg?region=0,0,640,480")
             		.user(userRepository.findById(10008).get()).build();
 
             Post p12= Post.builder().body("boom")
@@ -356,15 +356,15 @@ public class UsersConfig {
             Post p14= Post.builder().body("When in doubt, choose change.")
             		.datePosted(LocalDateTime.now().minusDays(7))
             		.user(userRepository.findById(10008).get()).build();
-            
+
             Post p15= Post.builder().body("Give people a second change, but not third chance.")
             		.datePosted(LocalDateTime.now().minusDays(3))
             		.user(userRepository.findById(10005).get()).build();
-            
+
             Post p16= Post.builder().body("Do not give up, the beginning is always the hardest.")
             		.datePosted(LocalDateTime.now().minusDays(2))
             		.user(userRepository.findById(10006).get()).build();
-            
+
             Post p17 = Post.builder().body("Congratulations!")
                 .datePosted(LocalDateTime.now().minusDays(15))
                 .imageUrl("https://media.discordapp.net/attachments/902067553210335237/902843225931399178/Ryujin_UP.jpg?width=349&height=508")
@@ -374,144 +374,144 @@ public class UsersConfig {
                 .datePosted(LocalDateTime.now().minusDays(10))
                 .imageUrl("https://www.rollingstone.com/wp-content/uploads/2023/02/selena-gomez-album-teaser.jpg")
                 .user(userRepository.findById(10010).get()).build();
-            
+
             List<Post> posts = List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
             		p11, p12, p13, p14, p15, p16, p17, p18);
-		      
+
             postRepository.saveAll(posts);
-            
+
 	        Comment c1 = Comment.builder()
 		    		.dateCommented(LocalDateTime.now())
 		    		.media("https://media.moddb.com/cache/images/members/5/4550/4549205/thumb_620x2000/duck.jpg")
 		    		.value("This is banana.")
 		    		.post(postRepository.findById(2).get())
 		    		.user(userRepository.findById(10003).get()).build();
-           
+
             Comment c2 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://pbs.twimg.com/profile_images/1074985128881864704/-WV56RC5_400x400.jpg")
     	    		.value("This is hatdog.")
     	    		.post(postRepository.findById(1).get())
     	    		.user(userRepository.findById(10001).get()).build();
-            
+
             Comment c3 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://pbs.twimg.com/profile_images/653700295395016708/WjGTnKGQ_400x400.png")
     	    		.value("Wow nice banana.")
     	    		.post(postRepository.findById(2).get())
     	    		.user(userRepository.findById(10002).get()).build();
-            
+
             Comment c4 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://media.tenor.com/9ModG8XWV5AAAAAd/puss-in.gif")
     	    		.value("Can you dm me this photo?")
     	    		.post(postRepository.findById(2).get())
     	    		.user(userRepository.findById(10004).get()).build();
-            
+
             Comment c5 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://media.tenor.com/eorzo18pmJoAAAAS/cringe.gif")
     	    		.value("Cringe")
     	    		.post(postRepository.findById(1).get())
     	    		.user(userRepository.findById(10005).get()).build();
-            
+
             Comment c6 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://media.tenor.com/PGVvHe1jMX8AAAAC/funny-laugh.gif")
     	    		.value("Benta! HAHAHAHA XD XD")
     	    		.post(postRepository.findById(8).get())
     	    		.user(userRepository.findById(10006).get()).build();
-            
+
             Comment c7 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://japanpowered.com/media/images/cringe-baby-picture-800x450.jpg")
     	    		.value("ah ok")
     	    		.post(postRepository.findById(8).get())
     	    		.user(userRepository.findById(10008).get()).build();
-            
+
             Comment c8 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://i.pinimg.com/736x/02/d8/c8/02d8c89ffe273e093d06036f49ed8302.jpg")
     	    		.value("hehe")
     	    		.post(postRepository.findById(8).get())
     	    		.user(userRepository.findById(10009).get()).build();
-            
+
             Comment c9 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://www.incimages.com/uploaded_files/image/1920x1080/getty_627216922_2000149920009280228_336748.jpg")
     	    		.value("Ayos yan!")
     	    		.post(postRepository.findById(8).get())
     	    		.user(userRepository.findById(10007).get()).build();
-            
+
             Comment c10 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.value("Cheezzzyyy")
     	    		.post(postRepository.findById(9).get())
     	    		.user(userRepository.findById(10005).get()).build();
-            
+
             Comment c11 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.value("Ayos yan idol!")
     	    		.post(postRepository.findById(9).get())
     	    		.user(userRepository.findById(10007).get()).build();
-            
+
             Comment c12 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.value("Sadboi")
     	    		.post(postRepository.findById(9).get())
     	    		.user(userRepository.findById(10008).get()).build();
-            
+
             Comment c13 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://media2.giphy.com/media/6pJNYBYSMFod2/giphy.gif")
     	    		.value("HAHAHAHA")
     	    		.post(postRepository.findById(9).get())
     	    		.user(userRepository.findById(10009).get()).build();
-            
+
             Comment c14 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.value("Basta post ni idol like ko yan!")
     	    		.post(postRepository.findById(14).get())
     	    		.user(userRepository.findById(10006).get()).build();
-            
+
             Comment c15 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.value("Gara ah!")
     	    		.post(postRepository.findById(14).get())
     	    		.user(userRepository.findById(10005).get()).build();
-            
+
             Comment c16 = Comment.builder()
     	    		.dateCommented(LocalDateTime.now())
     	    		.media("https://icon-library.com/images/fb-like-icon/fb-like-icon-23.jpg")
     	    		.value("Tama yan!")
     	    		.post(postRepository.findById(16).get())
     	    		.user(userRepository.findById(10007).get()).build();
-            
+
             List<Comment> comment = List.of(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,
             		c11, c12, c13, c14, c15, c16);
             commentRepository.saveAll(comment);
 
-             
+
         Follow f1 = Follow.builder()
         		.followee(userRepository.findById(10005).get())
         		.follower(userRepository.findById(10006).get()).build();
-        
+
         Follow f2 = Follow.builder()
         		.followee(userRepository.findById(10005).get())
         		.follower(userRepository.findById(10007).get()).build();
-        
+
         Follow f3 = Follow.builder()
         		.followee(userRepository.findById(10005).get())
         		.follower(userRepository.findById(10008).get()).build();
-        
+
         Follow f4 = Follow.builder()
         		.followee(userRepository.findById(10005).get())
         		.follower(userRepository.findById(10009).get()).build();
-        
+
         Follow f5 = Follow.builder()
         		.followee(userRepository.findById(10006).get())
         		.follower(userRepository.findById(10005).get()).build();
-        
+
         Follow f6 = Follow.builder()
         		.followee(userRepository.findById(10006).get())
         		.follower(userRepository.findById(10007).get()).build();
@@ -520,11 +520,11 @@ public class UsersConfig {
         		.followee(userRepository.findById(10006).get())
         		.follower(userRepository.findById(10008).get()).build();
 
-        
+
         Follow f8 = Follow.builder()
         		.followee(userRepository.findById(10006).get())
         		.follower(userRepository.findById(10009).get()).build();
-        
+
         Follow f9 = Follow.builder()
         		.followee(userRepository.findById(10007).get())
         		.follower(userRepository.findById(10005).get()).build();
@@ -540,11 +540,11 @@ public class UsersConfig {
         Follow f12 = Follow.builder()
         		.followee(userRepository.findById(10007).get())
         		.follower(userRepository.findById(10009).get()).build();
-        
+
         Follow f13 = Follow.builder()
         		.followee(userRepository.findById(10008).get())
         		.follower(userRepository.findById(10005).get()).build();
-        
+
         Follow f14 = Follow.builder()
         		.followee(userRepository.findById(10008).get())
         		.follower(userRepository.findById(10006).get()).build();
@@ -572,95 +572,95 @@ public class UsersConfig {
         Follow f20 = Follow.builder()
         		.followee(userRepository.findById(10009).get())
         		.follower(userRepository.findById(10008).get()).build();
-        
+
         Follow f21 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10000).get()).build();
-        
+
         Follow f22 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10001).get()).build();
-        
+
         Follow f23 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10002).get()).build();
-        
+
         Follow f24 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10003).get()).build();
-        
+
         Follow f25 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10004).get()).build();
-        
+
         Follow f26 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10005).get()).build();
-        
+
         Follow f27 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10006).get()).build();
-        
+
         Follow f28 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10007).get()).build();
-        
+
         Follow f29 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10008).get()).build();
-        
+
         Follow f30 = Follow.builder()
         		.followee(userRepository.findById(10010).get())
         		.follower(userRepository.findById(10009).get()).build();
-        
+
         List<Follow> follow = List.of(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12,
         		f13, f14, f15, f16, f17, f18, f19, f20, f21, f22,
         		f23, f24, f25, f26, f27, f28, f29, f30);
         followRepository.saveAll(follow);
-      
+
         Likes l1 = Likes.builder()
         		.userID(10000)
         		.postID(18).build();
-        
+
         Likes l2 = Likes.builder()
         		.userID(10001)
         		.postID(18).build();
-        
+
         Likes l3 = Likes.builder()
         		.userID(10002)
         		.postID(18).build();
-        
+
         Likes l4 = Likes.builder()
         		.userID(10003)
         		.postID(18).build();
-        
+
         Likes l5 = Likes.builder()
         		.userID(10004)
         		.postID(18).build();
-        
+
         Likes l6 = Likes.builder()
         		.userID(10005)
         		.postID(18).build();
-        
+
         Likes l7 = Likes.builder()
         		.userID(10006)
         		.postID(18).build();
-        
+
         Likes l8 = Likes.builder()
         		.userID(10007)
         		.postID(18).build();
-        
+
         Likes l9 = Likes.builder()
         		.userID(10008)
         		.postID(18).build();
-        
+
         Likes l10 = Likes.builder()
         		.userID(10009)
         		.postID(18).build();
-       
+
         List<Likes> likes = List.of(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
         likesRepository.saveAll(likes);
-        
+
         };
     }
 }
