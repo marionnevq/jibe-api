@@ -145,9 +145,6 @@ public class UserService {
 			user.setBirthday(userDTO.getBirthday());
 		}
 		
-		if(userDTO.getAge() != null) {
-			user.setAge(userDTO.getAge());
-		}
 
         if(userDTO.getFirstTimeLogin() != null) {
             user.setFirstTimeLogin(userDTO.getFirstTimeLogin());
