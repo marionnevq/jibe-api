@@ -68,8 +68,6 @@ public class User implements UserDetails {
 
 
 	
-	@Column(nullable = false)
-	private Integer age;
 
     @Column(nullable = false, length = 100)
     private String password;
